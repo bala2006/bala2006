@@ -278,6 +278,59 @@ function overviewSvg(data, p) {
   });
 }
 
+function overviewMobileSvg(data, p) {
+  const metrics = [
+    ['REPOSITORIES', data.repos.length], ['STARS', data.stars],
+    ['PUBLIC PRS', data.pullRequests], ['PUBLIC ISSUES', data.issues],
+    ['COMMITS · 52W', data.commits52w], ['ACTIVE · 90D', data.activeRepos90d],
+  ];
+  const cards = metrics.map(([label, value], index) => {
+    const x = 18 + (index % 2) * 166;
+    const y = 82 + Math.floor(index / 2) * 92;
+    return `<rect class="card" x="${x}" y="${y}" width="158" height="79" rx="12"/>
+<text x="${x + 13}" y="${y + 23}" class="tiny">${xml(label)}</text>
+<text x="${x + 13}" y="${y + 60}" class="value">${xml(formatNumber(value))}</text>`;
+  }).join('');
+
+  const languages = new Map();
+  const areas = new Map();
+  for (const repo of data.repos) {
+    languages.set(repo.primaryLanguage, (languages.get(repo.primaryLanguage) ?? 0) + 1);
+    areas.set(repo.area, (areas.get(repo.area) ?? 0) + 1);
+  }
+  const languageRows = [...languages.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, 7);
+  const areaRows = [...areas.entries()].sort((a, b) => b[1] - a[1]);
+  const languageMax = Math.max(1, ...languageRows.map(([, count]) => count));
+  const areaMax = Math.max(1, ...areaRows.map(([, count]) => count));
+  const lang = languageRows.map(([name, count], index) => {
+    const y = 405 + index * 25;
+    return `<text x="35" y="${y}" class="label">${xml(short(name, 15))}</text>
+<rect class="track" x="155" y="${y - 10}" width="145" height="10" rx="5"/>
+<rect x="155" y="${y - 10}" width="${(145 * count / languageMax).toFixed(1)}" height="10" rx="5" fill="${index % 2 ? p.accent2 : p.accent}"/>
+<text x="308" y="${y}" class="muted">${count}</text>`;
+  }).join('');
+  const area = areaRows.map(([name, count], index) => {
+    const y = 662 + index * 30;
+    return `<text x="35" y="${y}" class="label">${xml(short(name, 23))}</text>
+<rect class="track" x="240" y="${y - 10}" width="72" height="10" rx="5"/>
+<rect x="240" y="${y - 10}" width="${(72 * count / areaMax).toFixed(1)}" height="10" rx="5" fill="${index % 2 ? p.accent3 : p.accent}"/>
+<text x="320" y="${y}" class="muted">${count}</text>`;
+  }).join('');
+  const body = `<text x="18" y="38" class="title">PROFILE ANALYTICS</text>
+<text x="18" y="60" class="subtitle">Public projects · updated ${xml(data.generatedAt.slice(0, 10))}</text>
+${cards}
+<rect class="card" x="18" y="371" width="324" height="218" rx="14"/>
+<text x="35" y="394" class="label">Primary language by repository</text>${lang}
+<rect class="card" x="18" y="620" width="324" height="205" rx="14"/>
+<text x="35" y="646" class="label">Projects by focus area</text>${area}
+<text x="18" y="850" class="tiny">Commit counts include all authors on default branches.</text>`;
+  return svgBase({
+    title: 'GitHub profile analytics overview for phones',
+    description: 'Public repositories, stars, pull requests, issues, commits, active projects, languages, and focus areas.',
+    width: 360, height: 870, p, body,
+  });
+}
+
 function calendarSvg(data, p) {
   const cells = data.calendar;
   const first = cells.length ? new Date(`${cells[0].date}T00:00:00Z`) : new Date();
@@ -333,6 +386,46 @@ function calendarSvg(data, p) {
   });
 }
 
+function calendarMobileSvg(data, p) {
+  const lookup = new Map(data.calendar.map((day) => [day.date, day.commits]));
+  const end = new Date(`${data.calendar.at(-1)?.date ?? new Date().toISOString().slice(0, 10)}T00:00:00Z`);
+  const firstSunday = new Date(end);
+  firstSunday.setUTCDate(firstSunday.getUTCDate() - firstSunday.getUTCDay() - 51 * 7);
+  const max = Math.max(1, ...data.calendar.map((day) => day.commits));
+  const cells = [];
+  for (let week = 0; week < 52; week += 1) {
+    const half = Math.floor(week / 26);
+    const column = week % 26;
+    for (let dow = 0; dow < 7; dow += 1) {
+      const date = new Date(firstSunday);
+      date.setUTCDate(date.getUTCDate() + week * 7 + dow);
+      if (date > end) continue;
+      const key = date.toISOString().slice(0, 10);
+      const count = lookup.get(key) ?? 0;
+      const level = count === 0 ? 0 : Math.max(1, Math.ceil(count / max * 4));
+      const x = 33 + column * 12;
+      const y = 100 + half * 129 + dow * 12;
+      cells.push(`<rect x="${x}" y="${y}" width="9" height="9" rx="2" fill="${p.levels[level]}"><title>${xml(key)}: ${count} commits</title></rect>`);
+    }
+  }
+  const labels = [100, 229].map((start) => [['M', 1], ['W', 3], ['F', 5]].map(([label, dow]) =>
+    `<text x="17" y="${start + dow * 12 + 8}" class="tiny">${label}</text>`).join('')).join('');
+  const legend = p.levels.map((color, index) =>
+    `<rect x="${208 + index * 21}" y="358" width="13" height="13" rx="2" fill="${color}"/>`).join('');
+  const body = `<text x="18" y="36" class="title">COMMIT CALENDAR</text>
+<text x="18" y="57" class="subtitle">Daily commits · rolling 52 weeks</text>
+<text x="18" y="85" class="muted">Earlier 26 weeks</text>
+<text x="18" y="214" class="muted">Recent 26 weeks</text>
+${labels}${cells.join('')}
+<text x="18" y="369" class="tiny">Less</text>${legend}<text x="318" y="369" class="tiny">More</text>
+<text x="18" y="391" class="tiny">Public repositories · default branches · all authors</text>`;
+  return svgBase({
+    title: 'Custom GitHub commit calendar for phones',
+    description: 'A daily commit heatmap across public repository default branches, split into two 26-week panels for readability.',
+    width: 360, height: 408, p, body,
+  });
+}
+
 function activityStripSvg(data, p) {
   const weekCounts = new Map();
   for (const day of data.calendar) {
@@ -377,6 +470,36 @@ function activityStripSvg(data, p) {
     title: '52-week GitHub activity trail',
     description: 'A compact pixel graph of weekly commits across public non-fork repository default branches; brightness reflects commit count.',
     width: 1200, height: 205, p, body,
+  });
+}
+
+function activityStripMobileSvg(data, p) {
+  const weekCounts = new Map();
+  for (const day of data.calendar) {
+    const date = new Date(`${day.date}T00:00:00Z`);
+    date.setUTCDate(date.getUTCDate() - date.getUTCDay());
+    const week = date.toISOString().slice(0, 10);
+    weekCounts.set(week, (weekCounts.get(week) ?? 0) + day.commits);
+  }
+  const values = [...weekCounts.entries()].sort(([a], [b]) => a.localeCompare(b)).slice(-52);
+  const max = Math.max(1, ...values.map(([, count]) => count));
+  const columns = values.map(([week, count], index) => {
+    const x = 24 + (index % 26) * 12;
+    const bottom = index < 26 ? 116 : 198;
+    const level = count === 0 ? 0 : Math.max(1, Math.ceil(count / max * 3));
+    return `<g><title>Week of ${xml(week)}: ${count} commits</title>${Array.from({ length: 3 }, (_, row) =>
+      `<rect x="${x}" y="${bottom - row * 12}" width="9" height="9" rx="2" fill="${row < level ? p.levels[Math.min(4, level + 1)] : p.levels[0]}"/>`).join('')}</g>`;
+  }).join('');
+  const body = `<text x="18" y="36" class="title">52-WEEK ACTIVITY TRAIL</text>
+<text x="18" y="57" class="subtitle">Brighter pixels mean more commits</text>
+<text x="18" y="79" class="muted">Older weeks</text>
+<text x="18" y="161" class="muted">Recent weeks</text>
+${columns}
+<text x="18" y="224" class="tiny">Public default branches · all authors</text>`;
+  return svgBase({
+    title: '52-week activity trail for phones',
+    description: 'A two-row pixel graph of weekly commits on public repository default branches.',
+    width: 360, height: 240, p, body,
   });
 }
 
@@ -443,6 +566,55 @@ function commitAnalysisSvg(data, p) {
   });
 }
 
+function commitAnalysisMobileSvg(data, p) {
+  const body = [`<text x="18" y="38" class="title">COMMIT &amp; REPO ANALYSIS</text>
+<text x="18" y="59" class="subtitle">Monthly trend · recent activity · stars</text>`];
+  body.push(`<rect class="card" x="18" y="78" width="324" height="245" rx="14"/>
+<text x="35" y="105" class="label">Commits by month</text>
+<line x1="34" y1="276" x2="329" y2="276" stroke="${p.grid}"/>`);
+  const maxMonth = Math.max(1, ...data.months.map((item) => item.commits));
+  data.months.forEach((item, index) => {
+    const x = 34 + index * 25;
+    const height = Math.max(2, 145 * item.commits / maxMonth);
+    const y = 276 - height;
+    const month = new Date(`${item.month}-01T00:00:00Z`).toLocaleString('en-US', { month: 'short', timeZone: 'UTC' });
+    body.push(`<rect x="${x}" y="${y.toFixed(1)}" width="18" height="${height.toFixed(1)}" rx="3" fill="${index % 3 === 0 ? p.accent2 : p.accent}"><title>${xml(item.month)}: ${item.commits} commits</title></rect>
+<text x="${x + 9}" y="296" class="tiny" text-anchor="middle">${month.slice(0, 1)}</text>`);
+  });
+
+  const recent = [...data.repoStats].sort((a, b) => b.commits90d - a.commits90d || a.name.localeCompare(b.name)).slice(0, 7);
+  const maxRecent = Math.max(1, ...recent.map((repo) => repo.commits90d));
+  body.push(`<rect class="card" x="18" y="343" width="324" height="258" rx="14"/>
+<text x="35" y="371" class="label">Most active · last 90 days</text>`);
+  recent.forEach((repo, index) => {
+    const y = 400 + index * 27;
+    const width = 100 * repo.commits90d / maxRecent;
+    body.push(`<text x="35" y="${y}" class="muted">${xml(short(repo.name, 17))}</text>
+<rect class="track" x="217" y="${y - 10}" width="100" height="10" rx="5"/>
+<rect x="217" y="${y - 10}" width="${width.toFixed(1)}" height="10" rx="5" fill="${index % 2 ? p.accent2 : p.accent}"><title>${xml(repo.name)}: ${repo.commits90d} commits</title></rect>
+<text x="322" y="${y}" class="tiny">${repo.commits90d}</text>`);
+  });
+
+  const stars = [...data.repos].sort((a, b) => b.stars - a.stars || a.name.localeCompare(b.name)).slice(0, 6);
+  const maxStars = Math.max(1, ...stars.map((repo) => repo.stars));
+  body.push(`<rect class="card" x="18" y="621" width="324" height="207" rx="14"/>
+<text x="35" y="649" class="label">Most starred public projects</text>`);
+  stars.forEach((repo, index) => {
+    const y = 677 + index * 26;
+    const width = 85 * repo.stars / maxStars;
+    body.push(`<text x="35" y="${y}" class="muted">${xml(short(repo.name, 19))}</text>
+<rect class="track" x="216" y="${y - 10}" width="85" height="10" rx="5"/>
+<rect x="216" y="${y - 10}" width="${width.toFixed(1)}" height="10" rx="5" fill="${p.accent3}"><title>${xml(repo.name)}: ${repo.stars} stars</title></rect>
+<text x="307" y="${y}" class="tiny">★${repo.stars}</text>`);
+  });
+  body.push(`<text x="18" y="856" class="tiny">Commits cover public default branches · all authors.</text>`);
+  return svgBase({
+    title: 'GitHub commit and repository analysis for phones',
+    description: 'Stacked charts showing monthly commits, recently active repositories, and most-starred projects.',
+    width: 360, height: 875, p, body: body.join(''),
+  });
+}
+
 function placeholderSvg(title, message, p) {
   const body = `<text x="40" y="52" class="title">${xml(title)}</text>` +
     `<text x="40" y="80" class="subtitle">${xml(message)}</text>` +
@@ -486,9 +658,13 @@ async function main() {
 
   const svgByName = {
     overview: (p) => overviewSvg(data, p),
+    'overview-mobile': (p) => overviewMobileSvg(data, p),
     'activity-strip': (p) => activityStripSvg(data, p),
+    'activity-strip-mobile': (p) => activityStripMobileSvg(data, p),
     'commit-calendar': (p) => calendarSvg(data, p),
+    'commit-calendar-mobile': (p) => calendarMobileSvg(data, p),
     'commit-analysis': (p) => commitAnalysisSvg(data, p),
+    'commit-analysis-mobile': (p) => commitAnalysisMobileSvg(data, p),
   };
   for (const [name, render] of Object.entries(svgByName)) {
     for (const [mode, palette] of Object.entries(palettes)) {
