@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="292" viewBox="0 0 360 292" role="img" aria-labelledby="title desc">
+<title id="title">Hello, I am Bala</title><desc id="desc">Phone layout of Bala’s custom GitHub profile banner.</desc>
+<defs><linearGradient id="background" x2="1" y2="1"><stop stop-color="#0b141a"/><stop offset="1" stop-color="#172931"/></linearGradient></defs>
+<rect width="360" height="292" rx="24" fill="url(#background)"/>
+
+<circle cx="304" cy="90" r="61" fill="none" stroke="#31585b"/>
+<circle cx="304" cy="90" r="31" fill="#234a47" stroke="#5de0c3"/>
+<path d="M292 90h24M304 78v24" stroke="#5de0c3" stroke-width="2"/><rect x="239" y="22" width="6" height="6" rx="1" fill="#5de0c3" opacity=".72"/><rect x="270" y="65" width="6" height="6" rx="1" fill="#7eb4ff" opacity=".72"/><rect x="301" y="108" width="6" height="6" rx="1" fill="#b4a1ff" opacity=".72"/><rect x="332" y="151" width="6" height="6" rx="1" fill="#f2c26c" opacity=".72"/><rect x="259" y="52" width="6" height="6" rx="1" fill="#5de0c3" opacity=".72"/><rect x="290" y="95" width="6" height="6" rx="1" fill="#7eb4ff" opacity=".72"/><rect x="321" y="138" width="6" height="6" rx="1" fill="#b4a1ff" opacity=".72"/><rect x="248" y="39" width="6" height="6" rx="1" fill="#f2c26c" opacity=".72"/><rect x="279" y="82" width="6" height="6" rx="1" fill="#5de0c3" opacity=".72"/><rect x="310" y="125" width="6" height="6" rx="1" fill="#7eb4ff" opacity=".72"/><rect x="341" y="26" width="6" height="6" rx="1" fill="#b4a1ff" opacity=".72"/><rect x="268" y="69" width="6" height="6" rx="1" fill="#f2c26c" opacity=".72"/><rect x="299" y="112" width="6" height="6" rx="1" fill="#5de0c3" opacity=".72"/><rect x="330" y="155" width="6" height="6" rx="1" fill="#7eb4ff" opacity=".72"/><rect x="257" y="56" width="6" height="6" rx="1" fill="#b4a1ff" opacity=".72"/><rect x="288" y="99" width="6" height="6" rx="1" fill="#f2c26c" opacity=".72"/><rect x="319" y="142" width="6" height="6" rx="1" fill="#5de0c3" opacity=".72"/><rect x="246" y="43" width="6" height="6" rx="1" fill="#7eb4ff" opacity=".72"/><rect x="277" y="86" width="6" height="6" rx="1" fill="#b4a1ff" opacity=".72"/><rect x="308" y="129" width="6" height="6" rx="1" fill="#f2c26c" opacity=".72"/>
+<text x="24" y="43" fill="#5de0c3" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="3">HELLO, I&apos;M</text>
+<text x="21" y="109" fill="#f3f8f7" font-family="Segoe UI, Arial, sans-serif" font-size="63" font-weight="800">BALA</text>
+<text x="24" y="141" fill="#9bb2b6" font-family="Segoe UI, Arial, sans-serif" font-size="15">Moole Balachandra Sekhar Reddy</text>
+<path d="M24 161h312" stroke="#2b4146"/>
+<text x="24" y="194" fill="#f3f8f7" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="650">I build AI systems, apps,</text>
+<text x="24" y="217" fill="#f3f8f7" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="650">and research tools.</text>
+<g font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="700">
+  <rect x="24" y="244" width="93" height="28" rx="14" fill="#234a47" stroke="#5de0c3"/><text x="39" y="262" fill="#5de0c3">AI SYSTEMS</text>
+  <rect x="126" y="244" width="112" height="28" rx="14" fill="#172931" stroke="#7eb4ff"/><text x="137" y="262" fill="#7eb4ff">FORECASTING</text>
+  <rect x="247" y="244" width="89" height="28" rx="14" fill="#172931" stroke="#b4a1ff"/><text x="259" y="262" fill="#b4a1ff">MOBILE</text>
+</g>
+</svg>
