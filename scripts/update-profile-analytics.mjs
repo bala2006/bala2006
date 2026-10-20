@@ -300,18 +300,25 @@ function overviewMobileSvg(data, p) {
   }
   const languageRows = [...languages.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, 7);
   const areaRows = [...areas.entries()].sort((a, b) => b[1] - a[1]);
+  const mobileAreaNames = {
+    'AI systems & developer tools': 'AI systems & tools',
+    'Forecasting & reliability': 'Forecasting',
+    'Machine learning research': 'ML research',
+    'Apps & creative tools': 'Apps & creative',
+    'Experiments & community tools': 'Experiments',
+  };
   const languageMax = Math.max(1, ...languageRows.map(([, count]) => count));
   const areaMax = Math.max(1, ...areaRows.map(([, count]) => count));
   const lang = languageRows.map(([name, count], index) => {
-    const y = 405 + index * 25;
+    const y = 420 + index * 25;
     return `<text x="35" y="${y}" class="label">${xml(short(name, 15))}</text>
 <rect class="track" x="155" y="${y - 10}" width="145" height="10" rx="5"/>
 <rect x="155" y="${y - 10}" width="${(145 * count / languageMax).toFixed(1)}" height="10" rx="5" fill="${index % 2 ? p.accent2 : p.accent}"/>
 <text x="308" y="${y}" class="muted">${count}</text>`;
   }).join('');
   const area = areaRows.map(([name, count], index) => {
-    const y = 662 + index * 30;
-    return `<text x="35" y="${y}" class="label">${xml(short(name, 23))}</text>
+    const y = 672 + index * 30;
+    return `<text x="35" y="${y}" class="label">${xml(mobileAreaNames[name] ?? short(name, 23))}</text>
 <rect class="track" x="240" y="${y - 10}" width="72" height="10" rx="5"/>
 <rect x="240" y="${y - 10}" width="${(72 * count / areaMax).toFixed(1)}" height="10" rx="5" fill="${index % 2 ? p.accent3 : p.accent}"/>
 <text x="320" y="${y}" class="muted">${count}</text>`;
@@ -540,7 +547,8 @@ function commitAnalysisSvg(data, p) {
     body.push(`<text x="1095" y="${y + 3}" class="tiny">${repo.commits90d}</text>`);
   });
 
-  const stars = [...data.repos].sort((a, b) => b.stars - a.stars || a.name.localeCompare(b.name)).slice(0, 8);
+  const stars = [...data.repos].filter((repo) => repo.stars > 0)
+    .sort((a, b) => b.stars - a.stars || a.name.localeCompare(b.name)).slice(0, 8);
   const maxStars = Math.max(1, ...stars.map((r) => r.stars));
   body.push(`<rect class="card" x="32" y="373" width="1136" height="246" rx="16"/>`);
   body.push(`<text x="52" y="402" class="label">Most starred public repositories</text>`);
@@ -579,7 +587,7 @@ function commitAnalysisMobileSvg(data, p) {
     const y = 276 - height;
     const month = new Date(`${item.month}-01T00:00:00Z`).toLocaleString('en-US', { month: 'short', timeZone: 'UTC' });
     body.push(`<rect x="${x}" y="${y.toFixed(1)}" width="18" height="${height.toFixed(1)}" rx="3" fill="${index % 3 === 0 ? p.accent2 : p.accent}"><title>${xml(item.month)}: ${item.commits} commits</title></rect>
-<text x="${x + 9}" y="296" class="tiny" text-anchor="middle">${month.slice(0, 1)}</text>`);
+<text x="${x + 9}" y="296" class="tiny" text-anchor="middle">${month.slice(0, 2)}</text>`);
   });
 
   const recent = [...data.repoStats].sort((a, b) => b.commits90d - a.commits90d || a.name.localeCompare(b.name)).slice(0, 7);
@@ -595,7 +603,8 @@ function commitAnalysisMobileSvg(data, p) {
 <text x="322" y="${y}" class="tiny">${repo.commits90d}</text>`);
   });
 
-  const stars = [...data.repos].sort((a, b) => b.stars - a.stars || a.name.localeCompare(b.name)).slice(0, 6);
+  const stars = [...data.repos].filter((repo) => repo.stars > 0)
+    .sort((a, b) => b.stars - a.stars || a.name.localeCompare(b.name)).slice(0, 6);
   const maxStars = Math.max(1, ...stars.map((repo) => repo.stars));
   body.push(`<rect class="card" x="18" y="621" width="324" height="207" rx="14"/>
 <text x="35" y="649" class="label">Most starred public projects</text>`);
