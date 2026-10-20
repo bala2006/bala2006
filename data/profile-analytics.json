@@ -1,0 +1,1792 @@
+{
+  "generatedAt": "2026-10-20T10:45:48.022Z",
+  "owner": "bala2006",
+  "scope": "Public non-fork repositories; commit activity on each default branch.",
+  "repos": [
+    {
+      "name": "agentmesh-mcp",
+      "url": "https://github.com/bala2006/agentmesh-mcp",
+      "description": "Open-source MCP gateway for coordinating coding agents, multimodal analysis, shared artifacts, and centralized design-system workflows.",
+      "primaryLanguage": "TypeScript",
+      "stars": 0,
+      "forks": 0,
+      "pushedAt": "2026-09-12T15:15:22Z",
+      "archived": false,
+      "area": "AI systems & developer tools"
+    },
+    {
+      "name": "cobblemon-client-1.21.1",
+      "url": "https://github.com/bala2006/cobblemon-client-1.21.1",
+      "description": "One-click installer for Cobblemon client mods (Minecraft 1.21.1 / Fabric) - pinned and SHA-512 verified",
+      "primaryLanguage": "PowerShell",
+      "stars": 0,
+      "forks": 0,
+      "pushedAt": "2026-10-16T10:05:07Z",
+      "archived": false,
+      "area": "Experiments & community tools"
+    },
+    {
+      "name": "crazy-ads",
+      "url": "https://github.com/bala2006/crazy-ads",
+      "description": "",
+      "primaryLanguage": "Unspecified",
+      "stars": 0,
+      "forks": 0,
+      "pushedAt": "2026-10-11T14:45:25Z",
+      "archived": false,
+      "area": "Apps & creative tools"
+    },
+    {
+      "name": "Helium",
+      "url": "https://github.com/bala2006/Helium",
+      "description": "",
+      "primaryLanguage": "Kotlin",
+      "stars": 0,
+      "forks": 0,
+      "pushedAt": "2026-10-07T02:47:32Z",
+      "archived": false,
+      "area": "Apps & creative tools"
+    },
+    {
+      "name": "jma-etas-benchmark",
+      "url": "https://github.com/bala2006/jma-etas-benchmark",
+      "description": "72-hour probabilistic earthquake forecasting using ETAS model (JMA catalog, Tohoku/Kanto region)",
+      "primaryLanguage": "Python",
+      "stars": 1,
+      "forks": 0,
+      "pushedAt": "2026-09-07T05:33:03Z",
+      "archived": false,
+      "area": "Forecasting & reliability"
+    },
+    {
+      "name": "kiro-eng-toolkit",
+      "url": "https://github.com/bala2006/kiro-eng-toolkit",
+      "description": "Set up for best Agent work",
+      "primaryLanguage": "TypeScript",
+      "stars": 0,
+      "forks": 0,
+      "pushedAt": "2026-09-26T12:13:00Z",
+      "archived": false,
+      "area": "AI systems & developer tools"
+    },
+    {
+      "name": "laya-browser-mcp",
+      "url": "https://github.com/bala2006/laya-browser-mcp",
+      "description": "laya-browser-mcp — Lets AI assistants control a web browser for you: click, type, fill forms, and complete tasks across sites. It's a faster, smarter upgrade to the popular Playwright browser tool — it makes many decisions on your own machine, so it's quick and works with less back-and-forth.",
+      "primaryLanguage": "TypeScript",
+      "stars": 0,
+      "forks": 0,
+      "pushedAt": "2026-09-29T17:22:51Z",
+      "archived": false,
+      "area": "AI systems & developer tools"
+    },
+    {
+      "name": "laya-rail",
+      "url": "https://github.com/bala2006/laya-rail",
+      "description": "",
+      "primaryLanguage": "Unspecified",
+      "stars": 0,
+      "forks": 0,
+      "pushedAt": "2026-09-28T18:42:55Z",
+      "archived": false,
+      "area": "Experiments & community tools"
+    },
+    {
+      "name": "luna-calorie-releases",
+      "url": "https://github.com/bala2006/luna-calorie-releases",
+      "description": "Luna Calorie — releases, news, and issue tracking",
+      "primaryLanguage": "Unspecified",
+      "stars": 0,
+      "forks": 0,
+      "pushedAt": "2026-07-10T10:04:30Z",
+      "archived": false,
+      "area": "Apps & creative tools"
+    },
+    {
+      "name": "nero",
+      "url": "https://github.com/bala2006/nero",
+      "description": "Nero - An advanced Agentic AI Chat System powered by Sarvam AI",
+      "primaryLanguage": "Dart",
+      "stars": 2,
+      "forks": 0,
+      "pushedAt": "2026-09-28T12:31:44Z",
+      "archived": false,
+      "area": "AI systems & developer tools"
+    },
+    {
+      "name": "octopus",
+      "url": "https://github.com/bala2006/octopus",
+      "description": "",
+      "primaryLanguage": "Python",
+      "stars": 1,
+      "forks": 0,
+      "pushedAt": "2026-10-15T09:02:42Z",
+      "archived": false,
+      "area": "AI systems & developer tools"
+    },
+    {
+      "name": "railresilient-forecasting",
+      "url": "https://github.com/bala2006/railresilient-forecasting",
+      "description": "RailResilient is a reproducible CPU-first research project for probabilistic railway delay and disruption-recovery forecasting under delayed, missing, stale, or corrupted observations. It evaluates R3S-MoE against dense, GRU, Ridge, persistence, and reliability-ablation baselines using causal chronological RIDE Silver experiments.",
+      "primaryLanguage": "Python",
+      "stars": 0,
+      "forks": 0,
+      "pushedAt": "2026-09-06T17:52:30Z",
+      "archived": false,
+      "area": "Forecasting & reliability"
+    },
+    {
+      "name": "reliable-deepfake-detection",
+      "url": "https://github.com/bala2006/reliable-deepfake-detection",
+      "description": "",
+      "primaryLanguage": "Jupyter Notebook",
+      "stars": 0,
+      "forks": 0,
+      "pushedAt": "2026-09-28T16:40:11Z",
+      "archived": false,
+      "area": "Machine learning research"
+    },
+    {
+      "name": "Tactical-Grid",
+      "url": "https://github.com/bala2006/Tactical-Grid",
+      "description": "Tower Defense Game in native Android CPP",
+      "primaryLanguage": "Dart",
+      "stars": 2,
+      "forks": 0,
+      "pushedAt": "2026-07-06T11:36:45Z",
+      "archived": false,
+      "area": "Apps & creative tools"
+    },
+    {
+      "name": "traffic-safety-compute-reliability-benchmark",
+      "url": "https://github.com/bala2006/traffic-safety-compute-reliability-benchmark",
+      "description": "Compute-reliability benchmark for crash/near-crash prediction: a ~6.5K-param model matches a 67x larger Transformer. Calibration, conformal-style abstention, and measured OOD generalization on naturalistic driving data.",
+      "primaryLanguage": "Python",
+      "stars": 0,
+      "forks": 0,
+      "pushedAt": "2026-09-04T16:37:38Z",
+      "archived": false,
+      "area": "Forecasting & reliability"
+    },
+    {
+      "name": "transport-demand-forecasting",
+      "url": "https://github.com/bala2006/transport-demand-forecasting",
+      "description": "NYC taxi demand forecasting with 5 ML models (LR, RF, XGBoost, LSTM, TCN) + SHAP explainability",
+      "primaryLanguage": "Python",
+      "stars": 2,
+      "forks": 0,
+      "pushedAt": "2026-06-16T19:40:05Z",
+      "archived": false,
+      "area": "Forecasting & reliability"
+    },
+    {
+      "name": "voice-detection",
+      "url": "https://github.com/bala2006/voice-detection",
+      "description": "",
+      "primaryLanguage": "Unspecified",
+      "stars": 0,
+      "forks": 0,
+      "pushedAt": "2026-10-01T07:32:41Z",
+      "archived": false,
+      "area": "Machine learning research"
+    }
+  ],
+  "stars": 8,
+  "forks": 0,
+  "commits52w": 219,
+  "calendar": [
+    {
+      "date": "2025-10-26",
+      "commits": 0
+    },
+    {
+      "date": "2025-10-27",
+      "commits": 0
+    },
+    {
+      "date": "2025-10-28",
+      "commits": 0
+    },
+    {
+      "date": "2025-10-29",
+      "commits": 0
+    },
+    {
+      "date": "2025-10-30",
+      "commits": 0
+    },
+    {
+      "date": "2025-10-31",
+      "commits": 0
+    },
+    {
+      "date": "2025-11-01",
+      "commits": 0
+    },
+    {
+      "date": "2025-11-02",
+      "commits": 0
+    },
+    {
+      "date": "2025-11-03",
+      "commits": 0
+    },
+    {
+      "date": "2025-11-04",
+      "commits": 0
+    },
+    {
+      "date": "2025-11-05",
+      "commits": 0
+    },
+    {
+      "date": "2025-11-06",
+      "commits": 0
+    },
+    {
+      "date": "2025-11-07",
+      "commits": 0
+    },
+    {
+      "date": "2025-11-08",
+      "commits": 0
+    },
+    {
+      "date": "2025-11-09",
+      "commits": 0
+    },
+    {
+      "date": "2025-11-10",
+      "commits": 0
+    },
+    {
+      "date": "2025-11-11",
+      "commits": 0
+    },
+    {
+      "date": "2025-11-12",
+      "commits": 0
+    },
+    {
+      "date": "2025-11-13",
+      "commits": 0
+    },
+    {
+      "date": "2025-11-14",
+      "commits": 0
+    },
+    {
+      "date": "2025-11-15",
+      "commits": 0
+    },
+    {
+      "date": "2025-11-16",
+      "commits": 0
+    },
+    {
+      "date": "2025-11-17",
+      "commits": 0
+    },
+    {
+      "date": "2025-11-18",
+      "commits": 0
+    },
+    {
+      "date": "2025-11-19",
+      "commits": 0
+    },
+    {
+      "date": "2025-11-20",
+      "commits": 0
+    },
+    {
+      "date": "2025-11-21",
+      "commits": 0
+    },
+    {
+      "date": "2025-11-22",
+      "commits": 0
+    },
+    {
+      "date": "2025-11-23",
+      "commits": 0
+    },
+    {
+      "date": "2025-11-24",
+      "commits": 0
+    },
+    {
+      "date": "2025-11-25",
+      "commits": 0
+    },
+    {
+      "date": "2025-11-26",
+      "commits": 0
+    },
+    {
+      "date": "2025-11-27",
+      "commits": 0
+    },
+    {
+      "date": "2025-11-28",
+      "commits": 0
+    },
+    {
+      "date": "2025-11-29",
+      "commits": 0
+    },
+    {
+      "date": "2025-11-30",
+      "commits": 0
+    },
+    {
+      "date": "2025-12-01",
+      "commits": 0
+    },
+    {
+      "date": "2025-12-02",
+      "commits": 0
+    },
+    {
+      "date": "2025-12-03",
+      "commits": 0
+    },
+    {
+      "date": "2025-12-04",
+      "commits": 0
+    },
+    {
+      "date": "2025-12-05",
+      "commits": 0
+    },
+    {
+      "date": "2025-12-06",
+      "commits": 0
+    },
+    {
+      "date": "2025-12-07",
+      "commits": 0
+    },
+    {
+      "date": "2025-12-08",
+      "commits": 0
+    },
+    {
+      "date": "2025-12-09",
+      "commits": 0
+    },
+    {
+      "date": "2025-12-10",
+      "commits": 0
+    },
+    {
+      "date": "2025-12-11",
+      "commits": 0
+    },
+    {
+      "date": "2025-12-12",
+      "commits": 0
+    },
+    {
+      "date": "2025-12-13",
+      "commits": 0
+    },
+    {
+      "date": "2025-12-14",
+      "commits": 0
+    },
+    {
+      "date": "2025-12-15",
+      "commits": 0
+    },
+    {
+      "date": "2025-12-16",
+      "commits": 0
+    },
+    {
+      "date": "2025-12-17",
+      "commits": 0
+    },
+    {
+      "date": "2025-12-18",
+      "commits": 0
+    },
+    {
+      "date": "2025-12-19",
+      "commits": 0
+    },
+    {
+      "date": "2025-12-20",
+      "commits": 0
+    },
+    {
+      "date": "2025-12-21",
+      "commits": 0
+    },
+    {
+      "date": "2025-12-22",
+      "commits": 0
+    },
+    {
+      "date": "2025-12-23",
+      "commits": 0
+    },
+    {
+      "date": "2025-12-24",
+      "commits": 0
+    },
+    {
+      "date": "2025-12-25",
+      "commits": 0
+    },
+    {
+      "date": "2025-12-26",
+      "commits": 0
+    },
+    {
+      "date": "2025-12-27",
+      "commits": 0
+    },
+    {
+      "date": "2025-12-28",
+      "commits": 0
+    },
+    {
+      "date": "2025-12-29",
+      "commits": 0
+    },
+    {
+      "date": "2025-12-30",
+      "commits": 0
+    },
+    {
+      "date": "2025-12-31",
+      "commits": 0
+    },
+    {
+      "date": "2026-01-01",
+      "commits": 0
+    },
+    {
+      "date": "2026-01-02",
+      "commits": 0
+    },
+    {
+      "date": "2026-01-03",
+      "commits": 0
+    },
+    {
+      "date": "2026-01-04",
+      "commits": 0
+    },
+    {
+      "date": "2026-01-05",
+      "commits": 0
+    },
+    {
+      "date": "2026-01-06",
+      "commits": 0
+    },
+    {
+      "date": "2026-01-07",
+      "commits": 0
+    },
+    {
+      "date": "2026-01-08",
+      "commits": 0
+    },
+    {
+      "date": "2026-01-09",
+      "commits": 0
+    },
+    {
+      "date": "2026-01-10",
+      "commits": 0
+    },
+    {
+      "date": "2026-01-11",
+      "commits": 0
+    },
+    {
+      "date": "2026-01-12",
+      "commits": 0
+    },
+    {
+      "date": "2026-01-13",
+      "commits": 0
+    },
+    {
+      "date": "2026-01-14",
+      "commits": 0
+    },
+    {
+      "date": "2026-01-15",
+      "commits": 0
+    },
+    {
+      "date": "2026-01-16",
+      "commits": 0
+    },
+    {
+      "date": "2026-01-17",
+      "commits": 0
+    },
+    {
+      "date": "2026-01-18",
+      "commits": 0
+    },
+    {
+      "date": "2026-01-19",
+      "commits": 0
+    },
+    {
+      "date": "2026-01-20",
+      "commits": 0
+    },
+    {
+      "date": "2026-01-21",
+      "commits": 0
+    },
+    {
+      "date": "2026-01-22",
+      "commits": 0
+    },
+    {
+      "date": "2026-01-23",
+      "commits": 0
+    },
+    {
+      "date": "2026-01-24",
+      "commits": 0
+    },
+    {
+      "date": "2026-01-25",
+      "commits": 0
+    },
+    {
+      "date": "2026-01-26",
+      "commits": 0
+    },
+    {
+      "date": "2026-01-27",
+      "commits": 0
+    },
+    {
+      "date": "2026-01-28",
+      "commits": 0
+    },
+    {
+      "date": "2026-01-29",
+      "commits": 0
+    },
+    {
+      "date": "2026-01-30",
+      "commits": 0
+    },
+    {
+      "date": "2026-01-31",
+      "commits": 0
+    },
+    {
+      "date": "2026-02-01",
+      "commits": 0
+    },
+    {
+      "date": "2026-02-02",
+      "commits": 0
+    },
+    {
+      "date": "2026-02-03",
+      "commits": 0
+    },
+    {
+      "date": "2026-02-04",
+      "commits": 0
+    },
+    {
+      "date": "2026-02-05",
+      "commits": 0
+    },
+    {
+      "date": "2026-02-06",
+      "commits": 0
+    },
+    {
+      "date": "2026-02-07",
+      "commits": 0
+    },
+    {
+      "date": "2026-02-08",
+      "commits": 0
+    },
+    {
+      "date": "2026-02-09",
+      "commits": 0
+    },
+    {
+      "date": "2026-02-10",
+      "commits": 0
+    },
+    {
+      "date": "2026-02-11",
+      "commits": 0
+    },
+    {
+      "date": "2026-02-12",
+      "commits": 0
+    },
+    {
+      "date": "2026-02-13",
+      "commits": 0
+    },
+    {
+      "date": "2026-02-14",
+      "commits": 0
+    },
+    {
+      "date": "2026-02-15",
+      "commits": 0
+    },
+    {
+      "date": "2026-02-16",
+      "commits": 0
+    },
+    {
+      "date": "2026-02-17",
+      "commits": 0
+    },
+    {
+      "date": "2026-02-18",
+      "commits": 0
+    },
+    {
+      "date": "2026-02-19",
+      "commits": 0
+    },
+    {
+      "date": "2026-02-20",
+      "commits": 0
+    },
+    {
+      "date": "2026-02-21",
+      "commits": 0
+    },
+    {
+      "date": "2026-02-22",
+      "commits": 0
+    },
+    {
+      "date": "2026-02-23",
+      "commits": 0
+    },
+    {
+      "date": "2026-02-24",
+      "commits": 0
+    },
+    {
+      "date": "2026-02-25",
+      "commits": 0
+    },
+    {
+      "date": "2026-02-26",
+      "commits": 0
+    },
+    {
+      "date": "2026-02-27",
+      "commits": 0
+    },
+    {
+      "date": "2026-02-28",
+      "commits": 0
+    },
+    {
+      "date": "2026-03-01",
+      "commits": 0
+    },
+    {
+      "date": "2026-03-02",
+      "commits": 0
+    },
+    {
+      "date": "2026-03-03",
+      "commits": 0
+    },
+    {
+      "date": "2026-03-04",
+      "commits": 0
+    },
+    {
+      "date": "2026-03-05",
+      "commits": 0
+    },
+    {
+      "date": "2026-03-06",
+      "commits": 0
+    },
+    {
+      "date": "2026-03-07",
+      "commits": 0
+    },
+    {
+      "date": "2026-03-08",
+      "commits": 0
+    },
+    {
+      "date": "2026-03-09",
+      "commits": 0
+    },
+    {
+      "date": "2026-03-10",
+      "commits": 0
+    },
+    {
+      "date": "2026-03-11",
+      "commits": 0
+    },
+    {
+      "date": "2026-03-12",
+      "commits": 0
+    },
+    {
+      "date": "2026-03-13",
+      "commits": 0
+    },
+    {
+      "date": "2026-03-14",
+      "commits": 0
+    },
+    {
+      "date": "2026-03-15",
+      "commits": 0
+    },
+    {
+      "date": "2026-03-16",
+      "commits": 0
+    },
+    {
+      "date": "2026-03-17",
+      "commits": 0
+    },
+    {
+      "date": "2026-03-18",
+      "commits": 0
+    },
+    {
+      "date": "2026-03-19",
+      "commits": 0
+    },
+    {
+      "date": "2026-03-20",
+      "commits": 0
+    },
+    {
+      "date": "2026-03-21",
+      "commits": 0
+    },
+    {
+      "date": "2026-03-22",
+      "commits": 0
+    },
+    {
+      "date": "2026-03-23",
+      "commits": 0
+    },
+    {
+      "date": "2026-03-24",
+      "commits": 0
+    },
+    {
+      "date": "2026-03-25",
+      "commits": 0
+    },
+    {
+      "date": "2026-03-26",
+      "commits": 0
+    },
+    {
+      "date": "2026-03-27",
+      "commits": 0
+    },
+    {
+      "date": "2026-03-28",
+      "commits": 0
+    },
+    {
+      "date": "2026-03-29",
+      "commits": 0
+    },
+    {
+      "date": "2026-03-30",
+      "commits": 0
+    },
+    {
+      "date": "2026-03-31",
+      "commits": 0
+    },
+    {
+      "date": "2026-04-01",
+      "commits": 0
+    },
+    {
+      "date": "2026-04-02",
+      "commits": 1
+    },
+    {
+      "date": "2026-04-03",
+      "commits": 1
+    },
+    {
+      "date": "2026-04-04",
+      "commits": 0
+    },
+    {
+      "date": "2026-04-05",
+      "commits": 0
+    },
+    {
+      "date": "2026-04-06",
+      "commits": 0
+    },
+    {
+      "date": "2026-04-07",
+      "commits": 0
+    },
+    {
+      "date": "2026-04-08",
+      "commits": 0
+    },
+    {
+      "date": "2026-04-09",
+      "commits": 0
+    },
+    {
+      "date": "2026-04-10",
+      "commits": 0
+    },
+    {
+      "date": "2026-04-11",
+      "commits": 0
+    },
+    {
+      "date": "2026-04-12",
+      "commits": 0
+    },
+    {
+      "date": "2026-04-13",
+      "commits": 0
+    },
+    {
+      "date": "2026-04-14",
+      "commits": 0
+    },
+    {
+      "date": "2026-04-15",
+      "commits": 0
+    },
+    {
+      "date": "2026-04-16",
+      "commits": 0
+    },
+    {
+      "date": "2026-04-17",
+      "commits": 0
+    },
+    {
+      "date": "2026-04-18",
+      "commits": 0
+    },
+    {
+      "date": "2026-04-19",
+      "commits": 0
+    },
+    {
+      "date": "2026-04-20",
+      "commits": 0
+    },
+    {
+      "date": "2026-04-21",
+      "commits": 0
+    },
+    {
+      "date": "2026-04-22",
+      "commits": 0
+    },
+    {
+      "date": "2026-04-23",
+      "commits": 0
+    },
+    {
+      "date": "2026-04-24",
+      "commits": 0
+    },
+    {
+      "date": "2026-04-25",
+      "commits": 0
+    },
+    {
+      "date": "2026-04-26",
+      "commits": 0
+    },
+    {
+      "date": "2026-04-27",
+      "commits": 0
+    },
+    {
+      "date": "2026-04-28",
+      "commits": 0
+    },
+    {
+      "date": "2026-04-29",
+      "commits": 0
+    },
+    {
+      "date": "2026-04-30",
+      "commits": 0
+    },
+    {
+      "date": "2026-05-01",
+      "commits": 0
+    },
+    {
+      "date": "2026-05-02",
+      "commits": 0
+    },
+    {
+      "date": "2026-05-03",
+      "commits": 0
+    },
+    {
+      "date": "2026-05-04",
+      "commits": 0
+    },
+    {
+      "date": "2026-05-05",
+      "commits": 0
+    },
+    {
+      "date": "2026-05-06",
+      "commits": 0
+    },
+    {
+      "date": "2026-05-07",
+      "commits": 0
+    },
+    {
+      "date": "2026-05-08",
+      "commits": 0
+    },
+    {
+      "date": "2026-05-09",
+      "commits": 0
+    },
+    {
+      "date": "2026-05-10",
+      "commits": 0
+    },
+    {
+      "date": "2026-05-11",
+      "commits": 0
+    },
+    {
+      "date": "2026-05-12",
+      "commits": 0
+    },
+    {
+      "date": "2026-05-13",
+      "commits": 0
+    },
+    {
+      "date": "2026-05-14",
+      "commits": 0
+    },
+    {
+      "date": "2026-05-15",
+      "commits": 0
+    },
+    {
+      "date": "2026-05-16",
+      "commits": 0
+    },
+    {
+      "date": "2026-05-17",
+      "commits": 0
+    },
+    {
+      "date": "2026-05-18",
+      "commits": 0
+    },
+    {
+      "date": "2026-05-19",
+      "commits": 0
+    },
+    {
+      "date": "2026-05-20",
+      "commits": 0
+    },
+    {
+      "date": "2026-05-21",
+      "commits": 0
+    },
+    {
+      "date": "2026-05-22",
+      "commits": 0
+    },
+    {
+      "date": "2026-05-23",
+      "commits": 0
+    },
+    {
+      "date": "2026-05-24",
+      "commits": 0
+    },
+    {
+      "date": "2026-05-25",
+      "commits": 1
+    },
+    {
+      "date": "2026-05-26",
+      "commits": 0
+    },
+    {
+      "date": "2026-05-27",
+      "commits": 0
+    },
+    {
+      "date": "2026-05-28",
+      "commits": 0
+    },
+    {
+      "date": "2026-05-29",
+      "commits": 0
+    },
+    {
+      "date": "2026-05-30",
+      "commits": 0
+    },
+    {
+      "date": "2026-05-31",
+      "commits": 0
+    },
+    {
+      "date": "2026-06-01",
+      "commits": 0
+    },
+    {
+      "date": "2026-06-02",
+      "commits": 1
+    },
+    {
+      "date": "2026-06-03",
+      "commits": 0
+    },
+    {
+      "date": "2026-06-04",
+      "commits": 0
+    },
+    {
+      "date": "2026-06-05",
+      "commits": 0
+    },
+    {
+      "date": "2026-06-06",
+      "commits": 0
+    },
+    {
+      "date": "2026-06-07",
+      "commits": 0
+    },
+    {
+      "date": "2026-06-08",
+      "commits": 0
+    },
+    {
+      "date": "2026-06-09",
+      "commits": 0
+    },
+    {
+      "date": "2026-06-10",
+      "commits": 0
+    },
+    {
+      "date": "2026-06-11",
+      "commits": 0
+    },
+    {
+      "date": "2026-06-12",
+      "commits": 11
+    },
+    {
+      "date": "2026-06-13",
+      "commits": 0
+    },
+    {
+      "date": "2026-06-14",
+      "commits": 0
+    },
+    {
+      "date": "2026-06-15",
+      "commits": 0
+    },
+    {
+      "date": "2026-06-16",
+      "commits": 0
+    },
+    {
+      "date": "2026-06-17",
+      "commits": 4
+    },
+    {
+      "date": "2026-06-18",
+      "commits": 0
+    },
+    {
+      "date": "2026-06-19",
+      "commits": 0
+    },
+    {
+      "date": "2026-06-20",
+      "commits": 0
+    },
+    {
+      "date": "2026-06-21",
+      "commits": 0
+    },
+    {
+      "date": "2026-06-22",
+      "commits": 0
+    },
+    {
+      "date": "2026-06-23",
+      "commits": 0
+    },
+    {
+      "date": "2026-06-24",
+      "commits": 0
+    },
+    {
+      "date": "2026-06-25",
+      "commits": 0
+    },
+    {
+      "date": "2026-06-26",
+      "commits": 0
+    },
+    {
+      "date": "2026-06-27",
+      "commits": 0
+    },
+    {
+      "date": "2026-06-28",
+      "commits": 0
+    },
+    {
+      "date": "2026-06-29",
+      "commits": 0
+    },
+    {
+      "date": "2026-06-30",
+      "commits": 0
+    },
+    {
+      "date": "2026-07-01",
+      "commits": 0
+    },
+    {
+      "date": "2026-07-02",
+      "commits": 0
+    },
+    {
+      "date": "2026-07-03",
+      "commits": 0
+    },
+    {
+      "date": "2026-07-04",
+      "commits": 0
+    },
+    {
+      "date": "2026-07-05",
+      "commits": 0
+    },
+    {
+      "date": "2026-07-06",
+      "commits": 4
+    },
+    {
+      "date": "2026-07-07",
+      "commits": 0
+    },
+    {
+      "date": "2026-07-08",
+      "commits": 0
+    },
+    {
+      "date": "2026-07-09",
+      "commits": 0
+    },
+    {
+      "date": "2026-07-10",
+      "commits": 1
+    },
+    {
+      "date": "2026-07-11",
+      "commits": 0
+    },
+    {
+      "date": "2026-07-12",
+      "commits": 0
+    },
+    {
+      "date": "2026-07-13",
+      "commits": 0
+    },
+    {
+      "date": "2026-07-14",
+      "commits": 0
+    },
+    {
+      "date": "2026-07-15",
+      "commits": 0
+    },
+    {
+      "date": "2026-07-16",
+      "commits": 0
+    },
+    {
+      "date": "2026-07-17",
+      "commits": 0
+    },
+    {
+      "date": "2026-07-18",
+      "commits": 0
+    },
+    {
+      "date": "2026-07-19",
+      "commits": 0
+    },
+    {
+      "date": "2026-07-20",
+      "commits": 0
+    },
+    {
+      "date": "2026-07-21",
+      "commits": 0
+    },
+    {
+      "date": "2026-07-22",
+      "commits": 0
+    },
+    {
+      "date": "2026-07-23",
+      "commits": 0
+    },
+    {
+      "date": "2026-07-24",
+      "commits": 0
+    },
+    {
+      "date": "2026-07-25",
+      "commits": 0
+    },
+    {
+      "date": "2026-07-26",
+      "commits": 0
+    },
+    {
+      "date": "2026-07-27",
+      "commits": 0
+    },
+    {
+      "date": "2026-07-28",
+      "commits": 0
+    },
+    {
+      "date": "2026-07-29",
+      "commits": 0
+    },
+    {
+      "date": "2026-07-30",
+      "commits": 0
+    },
+    {
+      "date": "2026-07-31",
+      "commits": 0
+    },
+    {
+      "date": "2026-08-01",
+      "commits": 0
+    },
+    {
+      "date": "2026-08-02",
+      "commits": 0
+    },
+    {
+      "date": "2026-08-03",
+      "commits": 0
+    },
+    {
+      "date": "2026-08-04",
+      "commits": 0
+    },
+    {
+      "date": "2026-08-05",
+      "commits": 0
+    },
+    {
+      "date": "2026-08-06",
+      "commits": 0
+    },
+    {
+      "date": "2026-08-07",
+      "commits": 0
+    },
+    {
+      "date": "2026-08-08",
+      "commits": 0
+    },
+    {
+      "date": "2026-08-09",
+      "commits": 0
+    },
+    {
+      "date": "2026-08-10",
+      "commits": 0
+    },
+    {
+      "date": "2026-08-11",
+      "commits": 0
+    },
+    {
+      "date": "2026-08-12",
+      "commits": 0
+    },
+    {
+      "date": "2026-08-13",
+      "commits": 0
+    },
+    {
+      "date": "2026-08-14",
+      "commits": 0
+    },
+    {
+      "date": "2026-08-15",
+      "commits": 2
+    },
+    {
+      "date": "2026-08-16",
+      "commits": 0
+    },
+    {
+      "date": "2026-08-17",
+      "commits": 0
+    },
+    {
+      "date": "2026-08-18",
+      "commits": 0
+    },
+    {
+      "date": "2026-08-19",
+      "commits": 0
+    },
+    {
+      "date": "2026-08-20",
+      "commits": 0
+    },
+    {
+      "date": "2026-08-21",
+      "commits": 0
+    },
+    {
+      "date": "2026-08-22",
+      "commits": 0
+    },
+    {
+      "date": "2026-08-23",
+      "commits": 0
+    },
+    {
+      "date": "2026-08-24",
+      "commits": 0
+    },
+    {
+      "date": "2026-08-25",
+      "commits": 0
+    },
+    {
+      "date": "2026-08-26",
+      "commits": 0
+    },
+    {
+      "date": "2026-08-27",
+      "commits": 0
+    },
+    {
+      "date": "2026-08-28",
+      "commits": 0
+    },
+    {
+      "date": "2026-08-29",
+      "commits": 0
+    },
+    {
+      "date": "2026-08-30",
+      "commits": 0
+    },
+    {
+      "date": "2026-08-31",
+      "commits": 0
+    },
+    {
+      "date": "2026-09-01",
+      "commits": 0
+    },
+    {
+      "date": "2026-09-02",
+      "commits": 0
+    },
+    {
+      "date": "2026-09-03",
+      "commits": 3
+    },
+    {
+      "date": "2026-09-04",
+      "commits": 2
+    },
+    {
+      "date": "2026-09-05",
+      "commits": 0
+    },
+    {
+      "date": "2026-09-06",
+      "commits": 9
+    },
+    {
+      "date": "2026-09-07",
+      "commits": 0
+    },
+    {
+      "date": "2026-09-08",
+      "commits": 0
+    },
+    {
+      "date": "2026-09-09",
+      "commits": 0
+    },
+    {
+      "date": "2026-09-10",
+      "commits": 0
+    },
+    {
+      "date": "2026-09-11",
+      "commits": 0
+    },
+    {
+      "date": "2026-09-12",
+      "commits": 4
+    },
+    {
+      "date": "2026-09-13",
+      "commits": 0
+    },
+    {
+      "date": "2026-09-14",
+      "commits": 0
+    },
+    {
+      "date": "2026-09-15",
+      "commits": 0
+    },
+    {
+      "date": "2026-09-16",
+      "commits": 0
+    },
+    {
+      "date": "2026-09-17",
+      "commits": 0
+    },
+    {
+      "date": "2026-09-18",
+      "commits": 0
+    },
+    {
+      "date": "2026-09-19",
+      "commits": 0
+    },
+    {
+      "date": "2026-09-20",
+      "commits": 0
+    },
+    {
+      "date": "2026-09-21",
+      "commits": 2
+    },
+    {
+      "date": "2026-09-22",
+      "commits": 0
+    },
+    {
+      "date": "2026-09-23",
+      "commits": 0
+    },
+    {
+      "date": "2026-09-24",
+      "commits": 0
+    },
+    {
+      "date": "2026-09-25",
+      "commits": 0
+    },
+    {
+      "date": "2026-09-26",
+      "commits": 28
+    },
+    {
+      "date": "2026-09-27",
+      "commits": 42
+    },
+    {
+      "date": "2026-09-28",
+      "commits": 14
+    },
+    {
+      "date": "2026-09-29",
+      "commits": 7
+    },
+    {
+      "date": "2026-09-30",
+      "commits": 22
+    },
+    {
+      "date": "2026-10-01",
+      "commits": 37
+    },
+    {
+      "date": "2026-10-02",
+      "commits": 0
+    },
+    {
+      "date": "2026-10-03",
+      "commits": 0
+    },
+    {
+      "date": "2026-10-04",
+      "commits": 0
+    },
+    {
+      "date": "2026-10-05",
+      "commits": 2
+    },
+    {
+      "date": "2026-10-06",
+      "commits": 2
+    },
+    {
+      "date": "2026-10-07",
+      "commits": 8
+    },
+    {
+      "date": "2026-10-08",
+      "commits": 0
+    },
+    {
+      "date": "2026-10-09",
+      "commits": 0
+    },
+    {
+      "date": "2026-10-10",
+      "commits": 0
+    },
+    {
+      "date": "2026-10-11",
+      "commits": 1
+    },
+    {
+      "date": "2026-10-12",
+      "commits": 0
+    },
+    {
+      "date": "2026-10-13",
+      "commits": 0
+    },
+    {
+      "date": "2026-10-14",
+      "commits": 4
+    },
+    {
+      "date": "2026-10-15",
+      "commits": 1
+    },
+    {
+      "date": "2026-10-16",
+      "commits": 5
+    },
+    {
+      "date": "2026-10-17",
+      "commits": 0
+    },
+    {
+      "date": "2026-10-18",
+      "commits": 0
+    },
+    {
+      "date": "2026-10-19",
+      "commits": 0
+    },
+    {
+      "date": "2026-10-20",
+      "commits": 0
+    },
+    {
+      "date": "2026-10-21",
+      "commits": 0
+    },
+    {
+      "date": "2026-10-22",
+      "commits": 0
+    },
+    {
+      "date": "2026-10-23",
+      "commits": 0
+    },
+    {
+      "date": "2026-10-24",
+      "commits": 0
+    }
+  ],
+  "months": [
+    {
+      "month": "2025-11",
+      "commits": 0
+    },
+    {
+      "month": "2025-12",
+      "commits": 0
+    },
+    {
+      "month": "2026-01",
+      "commits": 0
+    },
+    {
+      "month": "2026-02",
+      "commits": 0
+    },
+    {
+      "month": "2026-03",
+      "commits": 0
+    },
+    {
+      "month": "2026-04",
+      "commits": 2
+    },
+    {
+      "month": "2026-05",
+      "commits": 1
+    },
+    {
+      "month": "2026-06",
+      "commits": 16
+    },
+    {
+      "month": "2026-07",
+      "commits": 5
+    },
+    {
+      "month": "2026-08",
+      "commits": 2
+    },
+    {
+      "month": "2026-09",
+      "commits": 133
+    },
+    {
+      "month": "2026-10",
+      "commits": 60
+    }
+  ],
+  "repoStats": [
+    {
+      "name": "agentmesh-mcp",
+      "url": "https://github.com/bala2006/agentmesh-mcp",
+      "commits90d": 4
+    },
+    {
+      "name": "cobblemon-client-1.21.1",
+      "url": "https://github.com/bala2006/cobblemon-client-1.21.1",
+      "commits90d": 5
+    },
+    {
+      "name": "crazy-ads",
+      "url": "https://github.com/bala2006/crazy-ads",
+      "commits90d": 1
+    },
+    {
+      "name": "Helium",
+      "url": "https://github.com/bala2006/Helium",
+      "commits90d": 7
+    },
+    {
+      "name": "jma-etas-benchmark",
+      "url": "https://github.com/bala2006/jma-etas-benchmark",
+      "commits90d": 0
+    },
+    {
+      "name": "kiro-eng-toolkit",
+      "url": "https://github.com/bala2006/kiro-eng-toolkit",
+      "commits90d": 1
+    },
+    {
+      "name": "laya-browser-mcp",
+      "url": "https://github.com/bala2006/laya-browser-mcp",
+      "commits90d": 88
+    },
+    {
+      "name": "laya-rail",
+      "url": "https://github.com/bala2006/laya-rail",
+      "commits90d": 1
+    },
+    {
+      "name": "luna-calorie-releases",
+      "url": "https://github.com/bala2006/luna-calorie-releases",
+      "commits90d": 0
+    },
+    {
+      "name": "nero",
+      "url": "https://github.com/bala2006/nero",
+      "commits90d": 2
+    },
+    {
+      "name": "octopus",
+      "url": "https://github.com/bala2006/octopus",
+      "commits90d": 68
+    },
+    {
+      "name": "railresilient-forecasting",
+      "url": "https://github.com/bala2006/railresilient-forecasting",
+      "commits90d": 9
+    },
+    {
+      "name": "reliable-deepfake-detection",
+      "url": "https://github.com/bala2006/reliable-deepfake-detection",
+      "commits90d": 6
+    },
+    {
+      "name": "Tactical-Grid",
+      "url": "https://github.com/bala2006/Tactical-Grid",
+      "commits90d": 0
+    },
+    {
+      "name": "traffic-safety-compute-reliability-benchmark",
+      "url": "https://github.com/bala2006/traffic-safety-compute-reliability-benchmark",
+      "commits90d": 2
+    },
+    {
+      "name": "transport-demand-forecasting",
+      "url": "https://github.com/bala2006/transport-demand-forecasting",
+      "commits90d": 0
+    },
+    {
+      "name": "voice-detection",
+      "url": "https://github.com/bala2006/voice-detection",
+      "commits90d": 1
+    }
+  ]
+}
