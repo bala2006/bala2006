@@ -13,6 +13,27 @@
 
 </div>
 
+## Live analytics
+
+These charts refresh daily from GitHub’s public repository data.
+
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="./assets/analytics/overview-light.svg">
+  <img src="./assets/analytics/overview-dark.svg" alt="Dashboard showing public repository, star, fork, and commit totals, primary language distribution, and project areas." width="100%">
+</picture>
+
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="./assets/analytics/commit-calendar-light.svg">
+  <img src="./assets/analytics/commit-calendar-dark.svg" alt="Custom daily commit calendar across public repository default branches for the rolling 52 weeks." width="100%">
+</picture>
+
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="./assets/analytics/commit-analysis-light.svg">
+  <img src="./assets/analytics/commit-analysis-dark.svg" alt="Charts of monthly commits, repositories with the most commits in the last 90 days, and repositories with the most stars." width="100%">
+</picture>
+
+*Calendar and commit charts count activity on public repositories’ default branches, including commits by all authors. Private repositories and forks are excluded.*
+
 ## Project map
 
 This profile is organized by problem space, so you can quickly find the work that interests you. The map includes public repositories; repository names and descriptions below link directly to the source projects.
