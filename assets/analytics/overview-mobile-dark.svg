@@ -15,43 +15,43 @@
 <text x="197" y="289" class="tiny">ACTIVE · 90D</text>
 <text x="197" y="326" class="value">13</text>
 <rect class="card" x="18" y="371" width="324" height="218" rx="14"/>
-<text x="35" y="394" class="label">Primary language by repository</text><text x="35" y="405" class="label">Python</text>
-<rect class="track" x="155" y="395" width="145" height="10" rx="5"/>
-<rect x="155" y="395" width="145.0" height="10" rx="5" fill="#56d6bf"/>
-<text x="308" y="405" class="muted">5</text><text x="35" y="430" class="label">Unspecified</text>
-<rect class="track" x="155" y="420" width="145" height="10" rx="5"/>
-<rect x="155" y="420" width="116.0" height="10" rx="5" fill="#a89aff"/>
-<text x="308" y="430" class="muted">4</text><text x="35" y="455" class="label">TypeScript</text>
-<rect class="track" x="155" y="445" width="145" height="10" rx="5"/>
-<rect x="155" y="445" width="87.0" height="10" rx="5" fill="#56d6bf"/>
-<text x="308" y="455" class="muted">3</text><text x="35" y="480" class="label">Dart</text>
-<rect class="track" x="155" y="470" width="145" height="10" rx="5"/>
-<rect x="155" y="470" width="58.0" height="10" rx="5" fill="#a89aff"/>
-<text x="308" y="480" class="muted">2</text><text x="35" y="505" class="label">Jupyter Notebo…</text>
-<rect class="track" x="155" y="495" width="145" height="10" rx="5"/>
-<rect x="155" y="495" width="29.0" height="10" rx="5" fill="#56d6bf"/>
-<text x="308" y="505" class="muted">1</text><text x="35" y="530" class="label">Kotlin</text>
-<rect class="track" x="155" y="520" width="145" height="10" rx="5"/>
-<rect x="155" y="520" width="29.0" height="10" rx="5" fill="#a89aff"/>
-<text x="308" y="530" class="muted">1</text><text x="35" y="555" class="label">PowerShell</text>
-<rect class="track" x="155" y="545" width="145" height="10" rx="5"/>
-<rect x="155" y="545" width="29.0" height="10" rx="5" fill="#56d6bf"/>
-<text x="308" y="555" class="muted">1</text>
+<text x="35" y="394" class="label">Primary language by repository</text><text x="35" y="420" class="label">Python</text>
+<rect class="track" x="155" y="410" width="145" height="10" rx="5"/>
+<rect x="155" y="410" width="145.0" height="10" rx="5" fill="#56d6bf"/>
+<text x="308" y="420" class="muted">5</text><text x="35" y="445" class="label">Unspecified</text>
+<rect class="track" x="155" y="435" width="145" height="10" rx="5"/>
+<rect x="155" y="435" width="116.0" height="10" rx="5" fill="#a89aff"/>
+<text x="308" y="445" class="muted">4</text><text x="35" y="470" class="label">TypeScript</text>
+<rect class="track" x="155" y="460" width="145" height="10" rx="5"/>
+<rect x="155" y="460" width="87.0" height="10" rx="5" fill="#56d6bf"/>
+<text x="308" y="470" class="muted">3</text><text x="35" y="495" class="label">Dart</text>
+<rect class="track" x="155" y="485" width="145" height="10" rx="5"/>
+<rect x="155" y="485" width="58.0" height="10" rx="5" fill="#a89aff"/>
+<text x="308" y="495" class="muted">2</text><text x="35" y="520" class="label">Jupyter Notebo…</text>
+<rect class="track" x="155" y="510" width="145" height="10" rx="5"/>
+<rect x="155" y="510" width="29.0" height="10" rx="5" fill="#56d6bf"/>
+<text x="308" y="520" class="muted">1</text><text x="35" y="545" class="label">Kotlin</text>
+<rect class="track" x="155" y="535" width="145" height="10" rx="5"/>
+<rect x="155" y="535" width="29.0" height="10" rx="5" fill="#a89aff"/>
+<text x="308" y="545" class="muted">1</text><text x="35" y="570" class="label">PowerShell</text>
+<rect class="track" x="155" y="560" width="145" height="10" rx="5"/>
+<rect x="155" y="560" width="29.0" height="10" rx="5" fill="#56d6bf"/>
+<text x="308" y="570" class="muted">1</text>
 <rect class="card" x="18" y="620" width="324" height="205" rx="14"/>
-<text x="35" y="646" class="label">Projects by focus area</text><text x="35" y="662" class="label">AI systems &amp; developer…</text>
-<rect class="track" x="240" y="652" width="72" height="10" rx="5"/>
-<rect x="240" y="652" width="72.0" height="10" rx="5" fill="#56d6bf"/>
-<text x="320" y="662" class="muted">5</text><text x="35" y="692" class="label">Apps &amp; creative tools</text>
-<rect class="track" x="240" y="682" width="72" height="10" rx="5"/>
-<rect x="240" y="682" width="57.6" height="10" rx="5" fill="#f0b45d"/>
-<text x="320" y="692" class="muted">4</text><text x="35" y="722" class="label">Forecasting &amp; reliabil…</text>
-<rect class="track" x="240" y="712" width="72" height="10" rx="5"/>
-<rect x="240" y="712" width="57.6" height="10" rx="5" fill="#56d6bf"/>
-<text x="320" y="722" class="muted">4</text><text x="35" y="752" class="label">Experiments &amp; communit…</text>
-<rect class="track" x="240" y="742" width="72" height="10" rx="5"/>
-<rect x="240" y="742" width="28.8" height="10" rx="5" fill="#f0b45d"/>
-<text x="320" y="752" class="muted">2</text><text x="35" y="782" class="label">Machine learning resea…</text>
-<rect class="track" x="240" y="772" width="72" height="10" rx="5"/>
-<rect x="240" y="772" width="28.8" height="10" rx="5" fill="#56d6bf"/>
-<text x="320" y="782" class="muted">2</text>
+<text x="35" y="646" class="label">Projects by focus area</text><text x="35" y="672" class="label">AI systems &amp; tools</text>
+<rect class="track" x="240" y="662" width="72" height="10" rx="5"/>
+<rect x="240" y="662" width="72.0" height="10" rx="5" fill="#56d6bf"/>
+<text x="320" y="672" class="muted">5</text><text x="35" y="702" class="label">Apps &amp; creative</text>
+<rect class="track" x="240" y="692" width="72" height="10" rx="5"/>
+<rect x="240" y="692" width="57.6" height="10" rx="5" fill="#f0b45d"/>
+<text x="320" y="702" class="muted">4</text><text x="35" y="732" class="label">Forecasting</text>
+<rect class="track" x="240" y="722" width="72" height="10" rx="5"/>
+<rect x="240" y="722" width="57.6" height="10" rx="5" fill="#56d6bf"/>
+<text x="320" y="732" class="muted">4</text><text x="35" y="762" class="label">Experiments</text>
+<rect class="track" x="240" y="752" width="72" height="10" rx="5"/>
+<rect x="240" y="752" width="28.8" height="10" rx="5" fill="#f0b45d"/>
+<text x="320" y="762" class="muted">2</text><text x="35" y="792" class="label">ML research</text>
+<rect class="track" x="240" y="782" width="72" height="10" rx="5"/>
+<rect x="240" y="782" width="28.8" height="10" rx="5" fill="#56d6bf"/>
+<text x="320" y="792" class="muted">2</text>
 <text x="18" y="850" class="tiny">Commit counts include all authors on default branches.</text></svg>
