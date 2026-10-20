@@ -83,7 +83,8 @@ async function getCommitActivity(repo) {
         await pause(2000 * (attempt + 1));
         continue;
       }
-      throw new Error(`Commit activity is still being calculated for ${repo.name}; retry on the next refresh.`);
+      console.log(`Weekly statistics are still pending for ${repo.name}; deriving its calendar from commit history.`);
+      return getCommitHistoryActivity(repo);
     }
     if (!response.ok) {
       const detail = (await response.text()).slice(0, 300);
@@ -92,6 +93,49 @@ async function getCommitActivity(repo) {
     return response.json();
   }
   throw new Error(`Unable to load commit activity for ${repo.name}.`);
+}
+
+async function getCommitHistoryActivity(repo) {
+  const until = new Date();
+  const since = new Date(until.getTime() - 364 * 24 * 60 * 60 * 1000);
+  since.setUTCHours(0, 0, 0, 0);
+  since.setUTCDate(since.getUTCDate() - since.getUTCDay());
+  const weeks = new Map();
+  let oldestSeen = until;
+
+  for (let page = 1; page <= 20; page += 1) {
+    const url = `${apiRoot}/repos/${owner}/${encodeURIComponent(repo.name)}/commits?per_page=100&page=${page}&since=${encodeURIComponent(since.toISOString())}&until=${encodeURIComponent(until.toISOString())}`;
+    const response = await fetch(url, {
+      headers: {
+        Accept: 'application/vnd.github+json',
+        'User-Agent': 'bala2006-profile-analytics',
+        'X-GitHub-Api-Version': '2022-11-28',
+      },
+    });
+    if (!response.ok) {
+      const detail = (await response.text()).slice(0, 300);
+      throw new Error(`${repo.name} commit history: GitHub API ${response.status}: ${detail}`);
+    }
+    const commits = await response.json();
+    if (commits.length === 0) break;
+    for (const item of commits) {
+      const stamp = item.commit?.committer?.date ?? item.commit?.author?.date;
+      if (!stamp) continue;
+      const date = new Date(stamp);
+      if (date < oldestSeen) oldestSeen = date;
+      const weekStart = new Date(date);
+      weekStart.setUTCDate(weekStart.getUTCDate() - weekStart.getUTCDay());
+      weekStart.setUTCHours(0, 0, 0, 0);
+      const timestamp = Math.floor(weekStart.getTime() / 1000);
+      const week = weeks.get(timestamp) ?? { week: timestamp, days: Array(7).fill(0), total: 0 };
+      week.days[date.getUTCDay()] += 1;
+      week.total += 1;
+      weeks.set(timestamp, week);
+    }
+    if (commits.length < 100 || oldestSeen <= since) break;
+    if (page === 20) throw new Error(`${repo.name} exceeds the 2,000-commit fallback window; refusing to publish a partial calendar.`);
+  }
+  return [...weeks.values()].sort((a, b) => a.week - b.week);
 }
 
 async function listPublicRepositories() {
