@@ -65,6 +65,18 @@ async function getJson(url, label) {
   return response.json();
 }
 
+async function getSearchTotal(kind) {
+  const query = `author:${owner} is:${kind}`;
+  const result = await getJson(
+    `${apiRoot}/search/issues?q=${encodeURIComponent(query)}&per_page=1`,
+    `Public ${kind} count`,
+  );
+  if (result.incomplete_results || !Number.isInteger(result.total_count)) {
+    throw new Error(`GitHub returned an incomplete public ${kind} count.`);
+  }
+  return result.total_count;
+}
+
 const pause = (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds));
 
 async function getCommitActivity(repo) {
@@ -206,18 +218,21 @@ function svgBase({ title, description, width, height, p, body }) {
 
 function overviewSvg(data, p) {
   const metrics = [
-    ['PUBLIC REPOS', data.repos.length, 'owned repositories'],
-    ['STARS', data.stars, 'across public repos'],
-    ['FORKS', data.forks, 'across public repos'],
-    ['COMMITS · 52 WEEKS', data.commits52w, 'default branch activity'],
+    ['PUBLIC REPOS', data.repos.length, 'owned, non-fork repositories'],
+    ['STARS EARNED', data.stars, 'across public projects'],
+    ['PULL REQUESTS', data.pullRequests, 'opened in public repositories'],
+    ['ISSUES OPENED', data.issues, 'in public repositories'],
+    ['COMMITS · 52 WEEKS', data.commits52w, 'all authors · default branches'],
+    ['ACTIVE REPOS · 90 DAYS', data.activeRepos90d, 'with default-branch commits'],
   ];
-  const cardWidth = 258;
+  const cardWidth = 352;
   const cards = metrics.map(([label, value, note], index) => {
-    const x = 40 + index * 280;
-    return `<g><rect class="card" x="${x}" y="102" width="${cardWidth}" height="104" rx="15"/>` +
-      `<text x="${x + 18}" y="129" class="tiny">${xml(label)}</text>` +
-      `<text x="${x + 18}" y="166" class="value">${xml(formatNumber(value))}</text>` +
-      `<text x="${x + 18}" y="190" class="tiny">${xml(note)}</text></g>`;
+    const x = 40 + (index % 3) * 376;
+    const y = 100 + Math.floor(index / 3) * 105;
+    return `<g><rect class="card" x="${x}" y="${y}" width="${cardWidth}" height="90" rx="15"/>` +
+      `<text x="${x + 18}" y="${y + 24}" class="tiny">${xml(label)}</text>` +
+      `<text x="${x + 18}" y="${y + 57}" class="value">${xml(formatNumber(value))}</text>` +
+      `<text x="${x + 105}" y="${y + 56}" class="tiny">${xml(note)}</text></g>`;
   }).join('');
 
   const languages = new Map();
@@ -232,7 +247,7 @@ function overviewSvg(data, p) {
   const maxLanguage = Math.max(1, ...languageRows.map(([, count]) => count));
   const maxArea = Math.max(1, ...areaRows.map(([, count]) => count));
   const leftRows = languageRows.map(([name, count], index) => {
-    const y = 270 + index * 25;
+    const y = 363 + index * 25;
     const width = 295 * count / maxLanguage;
     return `<text x="58" y="${y + 4}" class="label">${xml(short(name, 18))}</text>` +
       `<rect class="track" x="220" y="${y - 10}" width="295" height="12" rx="6"/>` +
@@ -240,7 +255,7 @@ function overviewSvg(data, p) {
       `<text x="526" y="${y + 2}" class="muted">${count}</text>`;
   }).join('');
   const rightRows = areaRows.map(([name, count], index) => {
-    const y = 270 + index * 25;
+    const y = 363 + index * 25;
     const width = 260 * count / maxArea;
     return `<text x="640" y="${y + 4}" class="label">${xml(short(name, 28))}</text>` +
       `<rect class="track" x="842" y="${y - 10}" width="260" height="12" rx="6"/>` +
@@ -251,15 +266,15 @@ function overviewSvg(data, p) {
   const body = `<text x="40" y="52" class="title">PROFILE ANALYTICS</text>` +
     `<text x="40" y="77" class="subtitle">Public, non-fork repositories · refreshed ${xml(data.generatedAt.slice(0, 10))}</text>` +
     cards +
-    `<rect class="card" x="40" y="232" width="530" height="218" rx="16"/>` +
-    `<text x="58" y="258" class="label">Primary language by repository</text>` + leftRows +
-    `<rect class="card" x="590" y="232" width="570" height="218" rx="16"/>` +
-    `<text x="610" y="258" class="label">Projects by focus area</text>` + rightRows +
-    `<text x="40" y="478" class="tiny">Commits count activity on each repository’s default branch; this is not an author-only contribution count.</text>`;
+    `<rect class="card" x="40" y="325" width="530" height="218" rx="16"/>` +
+    `<text x="58" y="351" class="label">Primary language by repository</text>` + leftRows +
+    `<rect class="card" x="590" y="325" width="570" height="218" rx="16"/>` +
+    `<text x="610" y="351" class="label">Projects by focus area</text>` + rightRows +
+    `<text x="40" y="573" class="tiny">Commit counts include all authors on public default branches. PR and issue counts cover items authored by bala2006 in public repositories.</text>`;
   return svgBase({
     title: 'GitHub profile analytics overview',
     description: 'Repository, star, fork, commit, language, and project-area summaries for public non-fork repositories.',
-    width: 1200, height: 500, p, body,
+    width: 1200, height: 600, p, body,
   });
 }
 
@@ -315,6 +330,53 @@ function calendarSvg(data, p) {
     title: 'Custom GitHub commit calendar',
     description: 'A daily heatmap of commits across public non-fork repository default branches for the rolling 52-week period.',
     width: 1200, height: 295, p, body,
+  });
+}
+
+function activityStripSvg(data, p) {
+  const weekCounts = new Map();
+  for (const day of data.calendar) {
+    const date = new Date(`${day.date}T00:00:00Z`);
+    date.setUTCDate(date.getUTCDate() - date.getUTCDay());
+    const week = date.toISOString().slice(0, 10);
+    weekCounts.set(week, (weekCounts.get(week) ?? 0) + day.commits);
+  }
+  const values = [...weekCounts.entries()].sort(([a], [b]) => a.localeCompare(b)).slice(-52);
+  const max = Math.max(1, ...values.map(([, count]) => count));
+  const x0 = 58;
+  const step = 21;
+  const bottom = 138;
+  const cell = 12;
+  const gap = 3;
+  const points = [];
+  const pixels = values.map(([week, count], index) => {
+    const x = x0 + index * step;
+    const levels = count === 0 ? 0 : Math.max(1, Math.ceil(count / max * 5));
+    const top = bottom - levels * (cell + gap) + (cell + gap) / 2;
+    points.push(`${x + cell / 2},${top}`);
+    let column = '';
+    for (let row = 0; row < 5; row += 1) {
+      const y = bottom - row * (cell + gap);
+      const color = row < levels ? p.levels[Math.min(4, Math.max(1, levels - row))] : p.levels[0];
+      column += `<rect x="${x}" y="${y}" width="${cell}" height="${cell}" rx="2" fill="${color}"/>`;
+    }
+    return `<g><title>Week of ${xml(week)}: ${count} commits</title>${column}</g>`;
+  }).join('');
+  const path = points.length > 1
+    ? `<polyline points="${points.join(' ')}" fill="none" stroke="${p.accent}" stroke-width="2" opacity=".58" stroke-linejoin="round"/>`
+    : '';
+  const last = points.at(-1)?.split(',') ?? [0, 0];
+  const marker = points.length
+    ? `<circle cx="${last[0]}" cy="${last[1]}" r="6" fill="${p.accent3}" stroke="${p.background}" stroke-width="2"/>`
+    : '';
+  const body = `<text x="42" y="43" class="title">52-WEEK ACTIVITY TRAIL</text>` +
+    `<text x="42" y="65" class="subtitle">Each column is a week · brighter squares mean more default-branch commits</text>` +
+    path + pixels + marker +
+    `<text x="42" y="184" class="tiny">Older</text><text x="1110" y="184" class="tiny">Now</text>`;
+  return svgBase({
+    title: '52-week GitHub activity trail',
+    description: 'A compact pixel graph of weekly commits across public non-fork repository default branches; brightness reflects commit count.',
+    width: 1200, height: 205, p, body,
   });
 }
 
@@ -402,6 +464,8 @@ async function main() {
     activity.push({ repo, weeks });
   }
   const aggregate = aggregateWeeks(activity);
+  const pullRequests = await getSearchTotal('pull-request');
+  const issues = await getSearchTotal('issue');
   const data = {
     generatedAt: new Date().toISOString(),
     owner,
@@ -411,7 +475,10 @@ async function main() {
     })),
     stars: repos.reduce((sum, repo) => sum + repo.stars, 0),
     forks: repos.reduce((sum, repo) => sum + repo.forks, 0),
+    pullRequests,
+    issues,
     commits52w: aggregate.commits52w,
+    activeRepos90d: aggregate.repoStats.filter((repo) => repo.commits90d > 0).length,
     calendar: aggregate.calendar,
     months: aggregate.months,
     repoStats: aggregate.repoStats.map(({ name, url, commits90d }) => ({ name, url, commits90d })),
@@ -419,6 +486,7 @@ async function main() {
 
   const svgByName = {
     overview: (p) => overviewSvg(data, p),
+    'activity-strip': (p) => activityStripSvg(data, p),
     'commit-calendar': (p) => calendarSvg(data, p),
     'commit-analysis': (p) => commitAnalysisSvg(data, p),
   };
