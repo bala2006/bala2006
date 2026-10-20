@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="875" viewBox="0 0 360 875" role="img" aria-labelledby="title desc"><title id="title">GitHub commit and repository analysis for phones</title><desc id="desc">Stacked charts showing monthly commits, recently active repositories, and most-starred projects.</desc><style>text{font-family:Inter,Segoe UI,Arial,sans-serif}.title{fill:#edf4f4;font-size:24px;font-weight:700}.subtitle{fill:#96a8ad;font-size:13px}.label{fill:#edf4f4;font-size:13px}.muted{fill:#96a8ad;font-size:12px}.tiny{fill:#687c82;font-size:10px}.value{fill:#edf4f4;font-size:29px;font-weight:700}.card{fill:#131e24;stroke:#2a3a40;stroke-width:1}.track{fill:#26363c}.accent{fill:#56d6bf}</style><rect width="360" height="875" rx="22" fill="#0d1419"/><text x="18" y="38" class="title">COMMIT &amp; REPO ANALYSIS</text>
+<text x="18" y="59" class="subtitle">Monthly trend · recent activity · stars</text><rect class="card" x="18" y="78" width="324" height="245" rx="14"/>
+<text x="35" y="105" class="label">Commits by month</text>
+<line x1="34" y1="276" x2="329" y2="276" stroke="#26363c"/><rect x="34" y="274.0" width="18" height="2.0" rx="3" fill="#a89aff"><title>2025-11: 0 commits</title></rect>
+<text x="43" y="296" class="tiny" text-anchor="middle">N</text><rect x="59" y="274.0" width="18" height="2.0" rx="3" fill="#56d6bf"><title>2025-12: 0 commits</title></rect>
+<text x="68" y="296" class="tiny" text-anchor="middle">D</text><rect x="84" y="274.0" width="18" height="2.0" rx="3" fill="#56d6bf"><title>2026-01: 0 commits</title></rect>
+<text x="93" y="296" class="tiny" text-anchor="middle">J</text><rect x="109" y="274.0" width="18" height="2.0" rx="3" fill="#a89aff"><title>2026-02: 0 commits</title></rect>
+<text x="118" y="296" class="tiny" text-anchor="middle">F</text><rect x="134" y="274.0" width="18" height="2.0" rx="3" fill="#56d6bf"><title>2026-03: 0 commits</title></rect>
+<text x="143" y="296" class="tiny" text-anchor="middle">M</text><rect x="159" y="273.8" width="18" height="2.2" rx="3" fill="#56d6bf"><title>2026-04: 2 commits</title></rect>
+<text x="168" y="296" class="tiny" text-anchor="middle">A</text><rect x="184" y="274.0" width="18" height="2.0" rx="3" fill="#a89aff"><title>2026-05: 1 commits</title></rect>
+<text x="193" y="296" class="tiny" text-anchor="middle">M</text><rect x="209" y="258.6" width="18" height="17.4" rx="3" fill="#56d6bf"><title>2026-06: 16 commits</title></rect>
+<text x="218" y="296" class="tiny" text-anchor="middle">J</text><rect x="234" y="270.5" width="18" height="5.5" rx="3" fill="#56d6bf"><title>2026-07: 5 commits</title></rect>
+<text x="243" y="296" class="tiny" text-anchor="middle">J</text><rect x="259" y="273.8" width="18" height="2.2" rx="3" fill="#a89aff"><title>2026-08: 2 commits</title></rect>
+<text x="268" y="296" class="tiny" text-anchor="middle">A</text><rect x="284" y="131.0" width="18" height="145.0" rx="3" fill="#56d6bf"><title>2026-09: 133 commits</title></rect>
+<text x="293" y="296" class="tiny" text-anchor="middle">S</text><rect x="309" y="210.6" width="18" height="65.4" rx="3" fill="#56d6bf"><title>2026-10: 60 commits</title></rect>
+<text x="318" y="296" class="tiny" text-anchor="middle">O</text><rect class="card" x="18" y="343" width="324" height="258" rx="14"/>
+<text x="35" y="371" class="label">Most active · last 90 days</text><text x="35" y="400" class="muted">laya-browser-mcp</text>
+<rect class="track" x="217" y="390" width="100" height="10" rx="5"/>
+<rect x="217" y="390" width="100.0" height="10" rx="5" fill="#56d6bf"><title>laya-browser-mcp: 88 commits</title></rect>
+<text x="322" y="400" class="tiny">88</text><text x="35" y="427" class="muted">octopus</text>
+<rect class="track" x="217" y="417" width="100" height="10" rx="5"/>
+<rect x="217" y="417" width="77.3" height="10" rx="5" fill="#a89aff"><title>octopus: 68 commits</title></rect>
+<text x="322" y="427" class="tiny">68</text><text x="35" y="454" class="muted">railresilient-fo…</text>
+<rect class="track" x="217" y="444" width="100" height="10" rx="5"/>
+<rect x="217" y="444" width="10.2" height="10" rx="5" fill="#56d6bf"><title>railresilient-forecasting: 9 commits</title></rect>
+<text x="322" y="454" class="tiny">9</text><text x="35" y="481" class="muted">Helium</text>
+<rect class="track" x="217" y="471" width="100" height="10" rx="5"/>
+<rect x="217" y="471" width="8.0" height="10" rx="5" fill="#a89aff"><title>Helium: 7 commits</title></rect>
+<text x="322" y="481" class="tiny">7</text><text x="35" y="508" class="muted">reliable-deepfak…</text>
+<rect class="track" x="217" y="498" width="100" height="10" rx="5"/>
+<rect x="217" y="498" width="6.8" height="10" rx="5" fill="#56d6bf"><title>reliable-deepfake-detection: 6 commits</title></rect>
+<text x="322" y="508" class="tiny">6</text><text x="35" y="535" class="muted">cobblemon-client…</text>
+<rect class="track" x="217" y="525" width="100" height="10" rx="5"/>
+<rect x="217" y="525" width="5.7" height="10" rx="5" fill="#a89aff"><title>cobblemon-client-1.21.1: 5 commits</title></rect>
+<text x="322" y="535" class="tiny">5</text><text x="35" y="562" class="muted">agentmesh-mcp</text>
+<rect class="track" x="217" y="552" width="100" height="10" rx="5"/>
+<rect x="217" y="552" width="4.5" height="10" rx="5" fill="#56d6bf"><title>agentmesh-mcp: 4 commits</title></rect>
+<text x="322" y="562" class="tiny">4</text><rect class="card" x="18" y="621" width="324" height="207" rx="14"/>
+<text x="35" y="649" class="label">Most starred public projects</text><text x="35" y="677" class="muted">nero</text>
+<rect class="track" x="216" y="667" width="85" height="10" rx="5"/>
+<rect x="216" y="667" width="85.0" height="10" rx="5" fill="#f0b45d"><title>nero: 2 stars</title></rect>
+<text x="307" y="677" class="tiny">★2</text><text x="35" y="703" class="muted">Tactical-Grid</text>
+<rect class="track" x="216" y="693" width="85" height="10" rx="5"/>
+<rect x="216" y="693" width="85.0" height="10" rx="5" fill="#f0b45d"><title>Tactical-Grid: 2 stars</title></rect>
+<text x="307" y="703" class="tiny">★2</text><text x="35" y="729" class="muted">transport-demand-f…</text>
+<rect class="track" x="216" y="719" width="85" height="10" rx="5"/>
+<rect x="216" y="719" width="85.0" height="10" rx="5" fill="#f0b45d"><title>transport-demand-forecasting: 2 stars</title></rect>
+<text x="307" y="729" class="tiny">★2</text><text x="35" y="755" class="muted">jma-etas-benchmark</text>
+<rect class="track" x="216" y="745" width="85" height="10" rx="5"/>
+<rect x="216" y="745" width="42.5" height="10" rx="5" fill="#f0b45d"><title>jma-etas-benchmark: 1 stars</title></rect>
+<text x="307" y="755" class="tiny">★1</text><text x="35" y="781" class="muted">octopus</text>
+<rect class="track" x="216" y="771" width="85" height="10" rx="5"/>
+<rect x="216" y="771" width="42.5" height="10" rx="5" fill="#f0b45d"><title>octopus: 1 stars</title></rect>
+<text x="307" y="781" class="tiny">★1</text><text x="35" y="807" class="muted">agentmesh-mcp</text>
+<rect class="track" x="216" y="797" width="85" height="10" rx="5"/>
+<rect x="216" y="797" width="0.0" height="10" rx="5" fill="#f0b45d"><title>agentmesh-mcp: 0 stars</title></rect>
+<text x="307" y="807" class="tiny">★0</text><text x="18" y="856" class="tiny">Commits cover public default branches · all authors.</text></svg>
