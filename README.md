@@ -1,6 +1,8 @@
 <div align="center">
 
 <picture>
+  <source media="(max-width: 600px) and (prefers-color-scheme: light)" srcset="./assets/hero-mobile-light.svg">
+  <source media="(max-width: 600px)" srcset="./assets/hero-mobile-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="./assets/hero-light.svg">
   <img src="./assets/hero-dark.svg" alt="Hello, I'm Bala — Moole Balachandra Sekhar Reddy. I build AI systems, apps, and research tools." width="100%">
 </picture>
@@ -18,6 +20,8 @@ I turn ambitious ideas into working software, then make the results easy to insp
 An overview of my public, non-fork repositories. The charts update daily.
 
 <picture>
+  <source media="(max-width: 600px) and (prefers-color-scheme: light)" srcset="./assets/analytics/overview-mobile-light.svg">
+  <source media="(max-width: 600px)" srcset="./assets/analytics/overview-mobile-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="./assets/analytics/overview-light.svg">
   <img src="./assets/analytics/overview-dark.svg" alt="Dashboard showing public repositories, stars, pull requests, issues, default-branch commits, active repositories, primary languages, and project areas." width="100%">
 </picture>
@@ -27,6 +31,8 @@ An overview of my public, non-fork repositories. The charts update daily.
 The technologies and problem spaces visible across my public projects.
 
 <picture>
+  <source media="(max-width: 600px) and (prefers-color-scheme: light)" srcset="./assets/skills-mobile-light.svg">
+  <source media="(max-width: 600px)" srcset="./assets/skills-mobile-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="./assets/skills-light.svg">
   <img src="./assets/skills-dark.svg" alt="Skills board grouped into languages, platforms and tools, and problem spaces." width="100%">
 </picture>
@@ -35,60 +41,42 @@ The technologies and problem spaces visible across my public projects.
 
 Start here for a quick view of what I build.
 
-<table>
-  <tr>
-    <td width="50%" valign="top">
-      <strong>AI systems</strong><br>
-      <a href="https://github.com/bala2006/nero"><strong>Nero</strong></a><br>
-      An on-device agentic assistant that plans tasks, uses tools, and connects to MCP servers.
-    </td>
-    <td width="50%" valign="top">
-      <strong>AI developer tools</strong><br>
-      <a href="https://github.com/bala2006/octopus"><strong>Octopus</strong></a><br>
-      A local-first team of AI agents that plans, builds, reviews, and tests software in a project folder.
-    </td>
-  </tr>
-  <tr>
-    <td valign="top">
-      <strong>Forecasting</strong><br>
-      <a href="https://github.com/bala2006/transport-demand-forecasting"><strong>Transport Demand Forecasting</strong></a><br>
-      NYC taxi demand prediction with model comparisons and SHAP explanations.
-    </td>
-    <td valign="top">
-      <strong>Research benchmark</strong><br>
-      <a href="https://github.com/bala2006/jma-etas-benchmark"><strong>JMA ETAS Benchmark</strong></a><br>
-      Reproducible 72-hour probabilistic earthquake forecasts for Tohoku and Kanto.
-    </td>
-  </tr>
-  <tr>
-    <td valign="top">
-      <strong>Mobile creation</strong><br>
-      <a href="https://github.com/bala2006/Helium"><strong>Helium</strong></a><br>
-      An Android video editor controlled through natural-language edit instructions.
-    </td>
-    <td valign="top">
-      <strong>Game development</strong><br>
-      <a href="https://github.com/bala2006/Tactical-Grid"><strong>Tactical Grid</strong></a><br>
-      A tower-defense game pairing Flutter UI with a native C++ engine.
-    </td>
-  </tr>
-</table>
+### AI systems
+
+- **[Nero](https://github.com/bala2006/nero)** — An on-device assistant that plans tasks, uses tools, and connects to MCP servers.
+- **[Octopus](https://github.com/bala2006/octopus)** — A local-first team of AI agents that plans, builds, reviews, and tests software.
+
+### Forecasting & research
+
+- **[Transport Demand Forecasting](https://github.com/bala2006/transport-demand-forecasting)** — NYC taxi demand prediction, model comparisons, and SHAP explanations.
+- **[JMA ETAS Benchmark](https://github.com/bala2006/jma-etas-benchmark)** — Reproducible 72-hour probabilistic earthquake forecasts for Tohoku and Kanto.
+
+### Apps & games
+
+- **[Helium](https://github.com/bala2006/Helium)** — An Android video editor controlled through natural-language edit instructions.
+- **[Tactical Grid](https://github.com/bala2006/Tactical-Grid)** — A tower-defense game pairing Flutter UI with a native C++ engine.
 
 ## Activity & analysis
 
 The activity strip, calendar, and charts refresh daily from GitHub's public repository data.
 
 <picture>
+  <source media="(max-width: 600px) and (prefers-color-scheme: light)" srcset="./assets/analytics/activity-strip-mobile-light.svg">
+  <source media="(max-width: 600px)" srcset="./assets/analytics/activity-strip-mobile-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="./assets/analytics/activity-strip-light.svg">
   <img src="./assets/analytics/activity-strip-dark.svg" alt="Pixel activity strip showing default-branch commit activity over the last 52 weeks." width="100%">
 </picture>
 
 <picture>
+  <source media="(max-width: 600px) and (prefers-color-scheme: light)" srcset="./assets/analytics/commit-calendar-mobile-light.svg">
+  <source media="(max-width: 600px)" srcset="./assets/analytics/commit-calendar-mobile-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="./assets/analytics/commit-calendar-light.svg">
   <img src="./assets/analytics/commit-calendar-dark.svg" alt="Custom daily commit calendar across public repository default branches for the rolling 52 weeks." width="100%">
 </picture>
 
 <picture>
+  <source media="(max-width: 600px) and (prefers-color-scheme: light)" srcset="./assets/analytics/commit-analysis-mobile-light.svg">
+  <source media="(max-width: 600px)" srcset="./assets/analytics/commit-analysis-mobile-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="./assets/analytics/commit-analysis-light.svg">
   <img src="./assets/analytics/commit-analysis-dark.svg" alt="Charts of monthly commits, repositories with the most commits in the last 90 days, and repositories with the most stars." width="100%">
 </picture>
@@ -100,6 +88,8 @@ The activity strip, calendar, and charts refresh daily from GitHub's public repo
 This map groups projects by the questions they tackle. The full index below links to every public project in the map.
 
 <picture>
+  <source media="(max-width: 600px) and (prefers-color-scheme: light)" srcset="./assets/repo-map-mobile-light.svg">
+  <source media="(max-width: 600px)" srcset="./assets/repo-map-mobile-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="./assets/repo-map-light.svg">
   <img src="./assets/repo-map.svg" alt="Diagram grouping my public GitHub projects into five areas: AI and developer tools, forecasting and reliability, machine learning research, apps and creative tools, and experiments." width="100%">
 </picture>
