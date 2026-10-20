@@ -1,25 +1,86 @@
 <div align="center">
 
-# Moole Balachandra Sekhar Reddy
-
-### I build AI systems, practical apps, and data driven research projects.
-
-**A map of my public work** · 17 public repositories · organized by what they explore
-
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="./assets/repo-map-light.svg">
-  <img src="./assets/repo-map.svg" alt="Diagram grouping my public GitHub projects into five areas: AI and developer tools, forecasting and reliability, machine learning research, apps and creative tools, and experiments." width="100%">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/hero-light.svg">
+  <img src="./assets/hero-dark.svg" alt="Hello, I'm Bala — Moole Balachandra Sekhar Reddy. I build AI systems, apps, and research tools." width="100%">
 </picture>
+
+<br>
+
+I turn ambitious ideas into working software, then make the results easy to inspect.
+
+[Selected work](#selected-work) · [Skills](#skills--focus) · [Activity](#activity--analysis) · [All projects](#explore-all-public-work) · [LinkedIn](https://www.linkedin.com/in/bala-chandra-sekhar-reddy-moole/)
 
 </div>
 
-## Live analytics
+## At a glance
 
-These charts refresh daily from GitHub’s public repository data.
+An overview of my public, non-fork repositories. The charts update daily.
 
 <picture>
   <source media="(prefers-color-scheme: light)" srcset="./assets/analytics/overview-light.svg">
-  <img src="./assets/analytics/overview-dark.svg" alt="Dashboard showing public repository, star, fork, and commit totals, primary language distribution, and project areas." width="100%">
+  <img src="./assets/analytics/overview-dark.svg" alt="Dashboard showing public repositories, stars, pull requests, issues, default-branch commits, active repositories, primary languages, and project areas." width="100%">
+</picture>
+
+## Skills & focus
+
+The technologies and problem spaces visible across my public projects.
+
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="./assets/skills-light.svg">
+  <img src="./assets/skills-dark.svg" alt="Skills board grouped into languages, platforms and tools, and problem spaces." width="100%">
+</picture>
+
+## Selected work
+
+Start here for a quick view of what I build.
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <strong>AI systems</strong><br>
+      <a href="https://github.com/bala2006/nero"><strong>Nero</strong></a><br>
+      An on-device agentic assistant that plans tasks, uses tools, and connects to MCP servers.
+    </td>
+    <td width="50%" valign="top">
+      <strong>AI developer tools</strong><br>
+      <a href="https://github.com/bala2006/octopus"><strong>Octopus</strong></a><br>
+      A local-first team of AI agents that plans, builds, reviews, and tests software in a project folder.
+    </td>
+  </tr>
+  <tr>
+    <td valign="top">
+      <strong>Forecasting</strong><br>
+      <a href="https://github.com/bala2006/transport-demand-forecasting"><strong>Transport Demand Forecasting</strong></a><br>
+      NYC taxi demand prediction with model comparisons and SHAP explanations.
+    </td>
+    <td valign="top">
+      <strong>Research benchmark</strong><br>
+      <a href="https://github.com/bala2006/jma-etas-benchmark"><strong>JMA ETAS Benchmark</strong></a><br>
+      Reproducible 72-hour probabilistic earthquake forecasts for Tohoku and Kanto.
+    </td>
+  </tr>
+  <tr>
+    <td valign="top">
+      <strong>Mobile creation</strong><br>
+      <a href="https://github.com/bala2006/Helium"><strong>Helium</strong></a><br>
+      An Android video editor controlled through natural-language edit instructions.
+    </td>
+    <td valign="top">
+      <strong>Game development</strong><br>
+      <a href="https://github.com/bala2006/Tactical-Grid"><strong>Tactical Grid</strong></a><br>
+      A tower-defense game pairing Flutter UI with a native C++ engine.
+    </td>
+  </tr>
+</table>
+
+## Activity & analysis
+
+The activity strip, calendar, and charts refresh daily from GitHub's public repository data.
+
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="./assets/analytics/activity-strip-light.svg">
+  <img src="./assets/analytics/activity-strip-dark.svg" alt="Pixel activity strip showing default-branch commit activity over the last 52 weeks." width="100%">
 </picture>
 
 <picture>
@@ -32,11 +93,19 @@ These charts refresh daily from GitHub’s public repository data.
   <img src="./assets/analytics/commit-analysis-dark.svg" alt="Charts of monthly commits, repositories with the most commits in the last 90 days, and repositories with the most stars." width="100%">
 </picture>
 
-*Calendar and commit charts count activity on public repositories’ default branches, including commits by all authors. Private repositories and forks are excluded.*
+*Commit counts cover public repositories' default branches and include all authors. Private repositories and forks are excluded. They will differ from GitHub's personal contribution count.*
 
-## Project map
+## Explore all public work
 
-This profile is organized by problem space, so you can quickly find the work that interests you. The map includes public repositories; repository names and descriptions below link directly to the source projects.
+This map groups projects by the questions they tackle. The full index below links to every public project in the map.
+
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="./assets/repo-map-light.svg">
+  <img src="./assets/repo-map.svg" alt="Diagram grouping my public GitHub projects into five areas: AI and developer tools, forecasting and reliability, machine learning research, apps and creative tools, and experiments." width="100%">
+</picture>
+
+<details>
+<summary><strong>Browse the full repository index by area</strong></summary>
 
 ### AI systems & developer tools
 
@@ -80,28 +149,9 @@ This profile is organized by problem space, so you can quickly find the work tha
 | [Laya Rail](https://github.com/bala2006/laya-rail) | An experiment in the Laya project family. |
 | [Cobblemon Client](https://github.com/bala2006/cobblemon-client-1.21.1) | A verified installer for a Minecraft 1.21.1 Fabric client setup. |
 
-## How the work connects
-
-```mermaid
-flowchart LR
-  A[Real-world signals] --> B[Forecasting & risk]
-  B --> C[Benchmarks & reliability]
-  D[User goals] --> E[AI agents & tools]
-  E --> F[Useful apps and workflows]
-  G[Research questions] --> H[Models & experiments]
-  H --> C
-```
-
-The diagram shows shared themes across projects, not software dependencies between repositories.
+</details>
 
 ## Find me
 
-- [LinkedIn](https://www.linkedin.com/in/bala-chandra-sekhar-reddy-moole/)
-- [All public repositories](https://github.com/bala2006?tab=repositories)
-
-<div align="center">
-
-*Building useful things, then making the evidence easy to inspect.*
-
-</div>
+[LinkedIn](https://www.linkedin.com/in/bala-chandra-sekhar-reddy-moole/) · [All public repositories](https://github.com/bala2006?tab=repositories)
 
