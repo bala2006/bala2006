@@ -4,7 +4,7 @@
   <source media="(max-width: 600px) and (prefers-color-scheme: light)" srcset="./assets/hero-mobile-light.svg">
   <source media="(max-width: 600px)" srcset="./assets/hero-mobile-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="./assets/hero-light.svg">
-  <img src="./assets/hero-dark.svg" alt="Bala Chandra Sekhar Reddy Moole (@bala2006). I build AI systems, research tools, and apps, then make the results easy to inspect. Currently building Nero, an on-device assistant that plans tasks, calls tools, and talks to MCP servers." width="100%">
+  <img src="./assets/hero-dark.svg" alt="Bala Chandra Sekhar Reddy Moole (@bala2006). I build AI systems, research tools, and apps, then make the results easy to inspect. Currently building Octopus, a local-first team of AI agents that plans, builds, reviews, and tests software." width="100%">
 </picture>
 
 </div>

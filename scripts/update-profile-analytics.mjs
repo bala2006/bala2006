@@ -15,8 +15,8 @@ const identity = {
   name: 'Bala Chandra Sekhar Reddy Moole',
   tagline: 'I build AI systems, research tools, and apps, then make the results easy to inspect.',
   buildingLabel: 'Currently building',
-  buildingName: 'Nero',
-  buildingNote: 'an on-device assistant that plans tasks, calls tools, and talks to MCP servers.',
+  buildingName: 'Octopus',
+  buildingNote: 'a local-first team of AI agents that plans, builds, reviews, and tests software.',
 };
 
 const projectAreas = {
@@ -71,6 +71,23 @@ const xml = (value = '') => String(value).replace(/[<>&"']/g, (char) => ({
 const short = (value, length = 24) => {
   const text = String(value ?? 'Unknown');
   return text.length > length ? `${text.slice(0, length - 1)}…` : text;
+};
+
+// Greedy wrap on a character budget, so narrow panels follow the copy instead of
+// hard-coding line breaks next to it.
+const wrapText = (value, maxChars) => {
+  const lines = [];
+  let line = '';
+  for (const word of String(value ?? '').split(/\s+/).filter(Boolean)) {
+    if (line && line.length + 1 + word.length > maxChars) {
+      lines.push(line);
+      line = word;
+    } else {
+      line = line ? `${line} ${word}` : word;
+    }
+  }
+  if (line) lines.push(line);
+  return lines.length ? lines : [''];
 };
 
 const formatNumber = (value) => new Intl.NumberFormat('en-US').format(value);
@@ -428,8 +445,7 @@ function heroSvg(_data, p) {
     + `<text x="24" y="110" class="hero-tag">${xml(identity.tagline)}</text>`
     + rule(p, 132, 24, 776)
     + `<text x="24" y="156" class="hero-eyebrow">${xml(identity.buildingLabel.toUpperCase())}</text>`
-    + `<text x="24" y="178" class="hero-building">${xml(identity.buildingName)}</text>`
-    + `<text x="${24 + identity.buildingName.length * 9 + 16}" y="178" class="hero-building-note">${xml(identity.buildingNote)}</text>`;
+    + `<text x="24" y="178"><tspan class="hero-building">${xml(identity.buildingName)}</tspan><tspan class="hero-building-note" dx="10">${xml(identity.buildingNote)}</tspan></text>`;
   return svgBase({
     title: `${identity.name} introduction`,
     description: `${identity.handle}. ${identity.tagline} Currently building ${identity.buildingName}, ${identity.buildingNote}`,
@@ -438,19 +454,24 @@ function heroSvg(_data, p) {
 }
 
 function heroMobileSvg(_data, p) {
+  const tagLines = wrapText(identity.tagline, 46);
+  const noteLines = wrapText(identity.buildingNote, 44);
+  const ruleY = 96 + (tagLines.length - 1) * 20 + 18;
+  const eyebrowY = ruleY + 24;
+  const nameY = eyebrowY + 20;
+  const noteTop = nameY + 20;
+  const height = noteTop + (noteLines.length - 1) * 16 + 22;
   const body = `<text x="20" y="40" class="hero-handle">${xml(identity.handle)}</text>`
     + `<text x="20" y="70" class="hero-name-sm">${xml(identity.name)}</text>`
-    + `<text x="20" y="96" class="hero-tag">${xml('I build AI systems, research tools, and apps,')}</text>`
-    + `<text x="20" y="116" class="hero-tag">${xml('then make the results easy to inspect.')}</text>`
-    + rule(p, 134, 20, 380)
-    + `<text x="20" y="158" class="hero-eyebrow">${xml(identity.buildingLabel.toUpperCase())}</text>`
-    + `<text x="20" y="178" class="hero-building">${xml(identity.buildingName)}</text>`
-    + `<text x="20" y="198" class="hero-building-note">${xml('An on-device assistant that plans tasks,')}</text>`
-    + `<text x="20" y="214" class="hero-building-note">${xml('calls tools, and talks to MCP servers.')}</text>`;
+    + tagLines.map((line, index) => `<text x="20" y="${96 + index * 20}" class="hero-tag">${xml(line)}</text>`).join('')
+    + rule(p, ruleY, 20, 380)
+    + `<text x="20" y="${eyebrowY}" class="hero-eyebrow">${xml(identity.buildingLabel.toUpperCase())}</text>`
+    + `<text x="20" y="${nameY}" class="hero-building">${xml(identity.buildingName)}</text>`
+    + noteLines.map((line, index) => `<text x="20" y="${noteTop + index * 16}" class="hero-building-note">${xml(line)}</text>`).join('');
   return svgBase({
     title: `${identity.name} introduction`,
     description: `${identity.handle}. ${identity.tagline} Currently building ${identity.buildingName}, ${identity.buildingNote}`,
-    width: 400, height: 236, p, body,
+    width: 400, height, p, body,
   });
 }
 
