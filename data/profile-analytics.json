@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-21T09:33:35.247Z",
+  "generatedAt": "2026-10-21T17:34:30.749Z",
   "owner": "bala2006",
   "scope": "Public non-fork repositories; commit activity on each default branch.",
   "repos": [
@@ -12,7 +12,7 @@
       "forks": 0,
       "pushedAt": "2026-10-20T19:18:13Z",
       "archived": false,
-      "area": "AI systems & developer tools"
+      "area": "AI systems"
     },
     {
       "name": "cobblemon-client-1.21.1",
@@ -23,7 +23,7 @@
       "forks": 0,
       "pushedAt": "2026-10-16T10:05:07Z",
       "archived": false,
-      "area": "Experiments & community tools"
+      "area": "Experiments"
     },
     {
       "name": "crazy-ads",
@@ -34,7 +34,7 @@
       "forks": 0,
       "pushedAt": "2026-10-11T14:45:25Z",
       "archived": false,
-      "area": "Apps & creative tools"
+      "area": "Apps & creative"
     },
     {
       "name": "Helium",
@@ -45,7 +45,7 @@
       "forks": 0,
       "pushedAt": "2026-10-07T02:47:32Z",
       "archived": false,
-      "area": "Apps & creative tools"
+      "area": "Apps & creative"
     },
     {
       "name": "jma-etas-benchmark",
@@ -56,7 +56,7 @@
       "forks": 0,
       "pushedAt": "2026-10-20T19:18:26Z",
       "archived": false,
-      "area": "Forecasting & reliability"
+      "area": "Forecasting"
     },
     {
       "name": "kiro-eng-toolkit",
@@ -67,7 +67,7 @@
       "forks": 0,
       "pushedAt": "2026-09-26T12:13:00Z",
       "archived": false,
-      "area": "AI systems & developer tools"
+      "area": "AI systems"
     },
     {
       "name": "laya-browser-mcp",
@@ -78,7 +78,7 @@
       "forks": 0,
       "pushedAt": "2026-09-29T17:22:51Z",
       "archived": false,
-      "area": "AI systems & developer tools"
+      "area": "AI systems"
     },
     {
       "name": "laya-rail",
@@ -89,7 +89,7 @@
       "forks": 0,
       "pushedAt": "2026-09-28T18:42:55Z",
       "archived": false,
-      "area": "Experiments & community tools"
+      "area": "Experiments"
     },
     {
       "name": "luna-calorie-releases",
@@ -100,7 +100,7 @@
       "forks": 0,
       "pushedAt": "2026-07-10T10:04:30Z",
       "archived": false,
-      "area": "Apps & creative tools"
+      "area": "Apps & creative"
     },
     {
       "name": "nero",
@@ -111,7 +111,7 @@
       "forks": 0,
       "pushedAt": "2026-09-28T12:31:44Z",
       "archived": false,
-      "area": "AI systems & developer tools"
+      "area": "AI systems"
     },
     {
       "name": "octopus",
@@ -120,9 +120,9 @@
       "primaryLanguage": "Python",
       "stars": 1,
       "forks": 0,
-      "pushedAt": "2026-10-15T09:02:42Z",
+      "pushedAt": "2026-10-21T17:23:39Z",
       "archived": false,
-      "area": "AI systems & developer tools"
+      "area": "AI systems"
     },
     {
       "name": "railresilient-forecasting",
@@ -133,7 +133,7 @@
       "forks": 0,
       "pushedAt": "2026-09-06T17:52:30Z",
       "archived": false,
-      "area": "Forecasting & reliability"
+      "area": "Forecasting"
     },
     {
       "name": "reliable-deepfake-detection",
@@ -144,7 +144,7 @@
       "forks": 0,
       "pushedAt": "2026-09-28T16:40:11Z",
       "archived": false,
-      "area": "Machine learning research"
+      "area": "ML research"
     },
     {
       "name": "Tactical-Grid",
@@ -155,7 +155,7 @@
       "forks": 0,
       "pushedAt": "2026-07-06T11:36:45Z",
       "archived": false,
-      "area": "Apps & creative tools"
+      "area": "Apps & creative"
     },
     {
       "name": "traffic-safety-compute-reliability-benchmark",
@@ -166,7 +166,7 @@
       "forks": 0,
       "pushedAt": "2026-09-04T16:37:38Z",
       "archived": false,
-      "area": "Forecasting & reliability"
+      "area": "Forecasting"
     },
     {
       "name": "transport-demand-forecasting",
@@ -177,7 +177,7 @@
       "forks": 0,
       "pushedAt": "2026-06-16T19:40:05Z",
       "archived": false,
-      "area": "Forecasting & reliability"
+      "area": "Forecasting"
     },
     {
       "name": "voice-detection",
@@ -188,15 +188,108 @@
       "forks": 0,
       "pushedAt": "2026-10-01T07:32:41Z",
       "archived": false,
-      "area": "Machine learning research"
+      "area": "ML research"
     }
   ],
   "stars": 8,
   "forks": 0,
   "pullRequests": 29,
   "issues": 18,
-  "commits52w": 251,
+  "commits52w": 223,
   "activeRepos90d": 14,
+  "languages": [
+    {
+      "name": "Dart",
+      "bytes": 2302969,
+      "share": 0.28991137631078717
+    },
+    {
+      "name": "TypeScript",
+      "bytes": 2143730,
+      "share": 0.26986542794919244
+    },
+    {
+      "name": "Python",
+      "bytes": 1692063,
+      "share": 0.21300691113712752
+    },
+    {
+      "name": "Kotlin",
+      "bytes": 734057,
+      "share": 0.09240744237571913
+    },
+    {
+      "name": "Jupyter Notebook",
+      "bytes": 432909,
+      "share": 0.054497148683862684
+    },
+    {
+      "name": "C++",
+      "bytes": 289726,
+      "share": 0.036472424688747056
+    },
+    {
+      "name": "HTML",
+      "bytes": 154530,
+      "share": 0.019453151554061708
+    },
+    {
+      "name": "JavaScript",
+      "bytes": 110387,
+      "share": 0.013896169291388144
+    },
+    {
+      "name": "PowerShell",
+      "bytes": 41336,
+      "share": 0.005203620479121819
+    },
+    {
+      "name": "Shell",
+      "bytes": 16713,
+      "share": 0.002103931417349598
+    },
+    {
+      "name": "R",
+      "bytes": 9680,
+      "share": 0.0012185757266764859
+    },
+    {
+      "name": "CSS",
+      "bytes": 6089,
+      "share": 0.0007665193801377192
+    },
+    {
+      "name": "Dockerfile",
+      "bytes": 3991,
+      "share": 0.0005024107154096957
+    },
+    {
+      "name": "Makefile",
+      "bytes": 1521,
+      "share": 0.00019147248763170814
+    },
+    {
+      "name": "CMake",
+      "bytes": 1379,
+      "share": 0.00017359668668252829
+    },
+    {
+      "name": "Mako",
+      "bytes": 1008,
+      "share": 0.00012689300955474149
+    },
+    {
+      "name": "Batchfile",
+      "bytes": 967,
+      "share": 0.00012173168674547126
+    },
+    {
+      "name": "C",
+      "bytes": 645,
+      "share": 0.00008119641980437327
+    }
+  ],
+  "totalBytes": 7943700,
   "calendar": [
     {
       "date": "2025-10-26",
@@ -832,11 +925,11 @@
     },
     {
       "date": "2026-04-02",
-      "commits": 2
+      "commits": 1
     },
     {
       "date": "2026-04-03",
-      "commits": 0
+      "commits": 1
     },
     {
       "date": "2026-04-04",
@@ -1548,19 +1641,19 @@
     },
     {
       "date": "2026-09-28",
-      "commits": 16
+      "commits": 14
     },
     {
       "date": "2026-09-29",
-      "commits": 6
+      "commits": 7
     },
     {
       "date": "2026-09-30",
-      "commits": 34
+      "commits": 22
     },
     {
       "date": "2026-10-01",
-      "commits": 45
+      "commits": 37
     },
     {
       "date": "2026-10-02",
@@ -1576,11 +1669,11 @@
     },
     {
       "date": "2026-10-05",
-      "commits": 3
+      "commits": 2
     },
     {
       "date": "2026-10-06",
-      "commits": 1
+      "commits": 2
     },
     {
       "date": "2026-10-07",
@@ -1608,15 +1701,15 @@
     },
     {
       "date": "2026-10-13",
-      "commits": 3
+      "commits": 0
     },
     {
       "date": "2026-10-14",
-      "commits": 1
+      "commits": 4
     },
     {
       "date": "2026-10-15",
-      "commits": 8
+      "commits": 1
     },
     {
       "date": "2026-10-16",
@@ -1636,11 +1729,11 @@
     },
     {
       "date": "2026-10-20",
-      "commits": 1
+      "commits": 0
     },
     {
       "date": "2026-10-21",
-      "commits": 0
+      "commits": 1
     },
     {
       "date": "2026-10-22",
@@ -1698,11 +1791,11 @@
     },
     {
       "month": "2026-09",
-      "commits": 149
+      "commits": 136
     },
     {
       "month": "2026-10",
-      "commits": 76
+      "commits": 61
     }
   ],
   "repoStats": [
@@ -1729,7 +1822,7 @@
     {
       "name": "jma-etas-benchmark",
       "url": "https://github.com/bala2006/jma-etas-benchmark",
-      "commits90d": 4
+      "commits90d": 3
     },
     {
       "name": "kiro-eng-toolkit",
@@ -1759,7 +1852,7 @@
     {
       "name": "octopus",
       "url": "https://github.com/bala2006/octopus",
-      "commits90d": 95
+      "commits90d": 69
     },
     {
       "name": "railresilient-forecasting",
@@ -1769,7 +1862,7 @@
     {
       "name": "reliable-deepfake-detection",
       "url": "https://github.com/bala2006/reliable-deepfake-detection",
-      "commits90d": 7
+      "commits90d": 6
     },
     {
       "name": "Tactical-Grid",

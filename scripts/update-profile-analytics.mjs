@@ -5,39 +5,64 @@ import { fileURLToPath } from 'node:url';
 const owner = 'bala2006';
 const profileRepo = owner;
 const apiRoot = 'https://api.github.com';
-const outDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const scriptPath = fileURLToPath(import.meta.url);
+const outDir = path.resolve(path.dirname(scriptPath), '..');
 const analyticsDir = path.join(outDir, 'assets', 'analytics');
 const dataDir = path.join(outDir, 'data');
 
+const identity = {
+  handle: '@bala2006',
+  name: 'Bala Chandra Sekhar Reddy Moole',
+  tagline: 'I build AI systems, research tools, and apps, then make the results easy to inspect.',
+  buildingLabel: 'Currently building',
+  buildingName: 'Nero',
+  buildingNote: 'an on-device assistant that plans tasks, calls tools, and talks to MCP servers.',
+};
+
 const projectAreas = {
-  'AI systems & developer tools': [
+  'AI systems': [
     'nero', 'octopus', 'agentmesh-mcp', 'laya-browser-mcp', 'kiro-eng-toolkit',
   ],
-  'Forecasting & reliability': [
+  'Forecasting': [
     'transport-demand-forecasting', 'jma-etas-benchmark', 'railresilient-forecasting',
     'traffic-safety-compute-reliability-benchmark',
   ],
-  'Machine learning research': ['reliable-deepfake-detection', 'voice-detection'],
-  'Apps & creative tools': [
-    'Tactical-Grid', 'Helium', 'luna-calorie-releases', 'crazy-ads',
-  ],
-  'Experiments & community tools': ['laya-rail', 'cobblemon-client-1.21.1'],
+  'ML research': ['reliable-deepfake-detection', 'voice-detection'],
+  'Apps & creative': ['Tactical-Grid', 'Helium', 'luna-calorie-releases', 'crazy-ads'],
+  'Experiments': ['laya-rail', 'cobblemon-client-1.21.1'],
 };
 
+// GitHub's Primer light and dark tokens, plus the exact contribution-graph ramp.
 const palettes = {
   dark: {
-    background: '#0d1419', card: '#131e24', cardAlt: '#17242a', border: '#2a3a40',
-    text: '#edf4f4', muted: '#96a8ad', subtle: '#687c82', accent: '#56d6bf',
-    accent2: '#a89aff', accent3: '#f0b45d', grid: '#26363c',
-    levels: ['#17242a', '#124c45', '#167b68', '#28ad8c', '#61dfbd'],
+    canvas: '#0d1117', subtle: '#161b22', border: '#30363d',
+    fg: '#e6edf3', muted: '#8b949e', faint: '#6e7681',
+    accent: '#58a6ff', success: '#3fb950',
+    levels: ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'],
+    other: '#484f58',
   },
   light: {
-    background: '#f3f8f7', card: '#ffffff', cardAlt: '#edf5f3', border: '#d4e1de',
-    text: '#18292e', muted: '#5e7479', subtle: '#7c9195', accent: '#087f6e',
-    accent2: '#6856b5', accent3: '#aa6700', grid: '#dce8e5',
-    levels: ['#eaf2f0', '#b9e5d9', '#76ccb4', '#34a98c', '#087f6e'],
+    canvas: '#ffffff', subtle: '#f6f8fa', border: '#d0d7de',
+    fg: '#1f2328', muted: '#59636e', faint: '#818b98',
+    accent: '#0969da', success: '#1a7f37',
+    levels: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39'],
+    other: '#afb8c1',
   },
 };
+
+// Linguist colors, so the language bar reads like GitHub's own.
+const languageColors = {
+  Python: '#3572a5', TypeScript: '#3178c6', JavaScript: '#f1e05a', 'C++': '#f34b7d',
+  Dart: '#00b4ab', HTML: '#e34c26', CSS: '#563d7c', Shell: '#89e051',
+  'Jupyter Notebook': '#da5b0b', Kotlin: '#a97bff', Java: '#b07219', Rust: '#dea584',
+  'C#': '#178600', C: '#555555', Go: '#00add8', Swift: '#f05138', Vue: '#41b883',
+  Ruby: '#701516', PHP: '#4f5d95', SCSS: '#c6538c', MDX: '#fcb32c', PowerShell: '#012456',
+  Makefile: '#427819', Dockerfile: '#384d54', CMake: '#da3434',
+};
+
+const fallbackColors = ['#8b949e', '#d29922', '#a371f7', '#39c5cf', '#f85149'];
+
+const fontFamily = '-apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif';
 
 const xml = (value = '') => String(value).replace(/[<>&"']/g, (char) => ({
   '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;', "'": '&apos;',
@@ -50,14 +75,35 @@ const short = (value, length = 24) => {
 
 const formatNumber = (value) => new Intl.NumberFormat('en-US').format(value);
 
+const formatPercent = (share) => {
+  const percent = share * 100;
+  if (percent > 0 && percent < 1) return '<1%';
+  return `${Math.round(percent)}%`;
+};
+
+const formatDate = (value) => new Date(value)
+  .toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+
+const monthName = (date) => date.toLocaleString('en-US', { month: 'short', timeZone: 'UTC' });
+
+const hashOf = (value) => [...String(value)]
+  .reduce((hash, char) => ((hash * 31) + char.charCodeAt(0)) >>> 0, 7);
+
+const languageColor = (name) => languageColors[name] ?? fallbackColors[hashOf(name) % fallbackColors.length];
+
+const apiHeaders = () => {
+  const headers = {
+    Accept: 'application/vnd.github+json',
+    'User-Agent': 'bala2006-profile-analytics',
+    'X-GitHub-Api-Version': '2022-11-28',
+  };
+  const token = process.env.GITHUB_TOKEN ?? process.env.GH_TOKEN ?? '';
+  if (token) headers.Authorization = `Bearer ${token}`;
+  return headers;
+};
+
 async function getJson(url, label) {
-  const response = await fetch(url, {
-    headers: {
-      Accept: 'application/vnd.github+json',
-      'User-Agent': 'bala2006-profile-analytics',
-      'X-GitHub-Api-Version': '2022-11-28',
-    },
-  });
+  const response = await fetch(url, { headers: apiHeaders() });
   if (!response.ok) {
     const detail = (await response.text()).slice(0, 300);
     throw new Error(`${label}: GitHub API ${response.status}: ${detail}`);
@@ -82,13 +128,7 @@ const pause = (milliseconds) => new Promise((resolve) => setTimeout(resolve, mil
 async function getCommitActivity(repo) {
   const url = `${apiRoot}/repos/${owner}/${encodeURIComponent(repo.name)}/stats/commit_activity`;
   for (let attempt = 0; attempt < 3; attempt += 1) {
-    const response = await fetch(url, {
-      headers: {
-        Accept: 'application/vnd.github+json',
-        'User-Agent': 'bala2006-profile-analytics',
-        'X-GitHub-Api-Version': '2022-11-28',
-      },
-    });
+    const response = await fetch(url, { headers: apiHeaders() });
     if (response.status === 204) return [];
     if (response.status === 202) {
       if (attempt < 2) {
@@ -117,13 +157,7 @@ async function getCommitHistoryActivity(repo) {
 
   for (let page = 1; page <= 20; page += 1) {
     const url = `${apiRoot}/repos/${owner}/${encodeURIComponent(repo.name)}/commits?per_page=100&page=${page}&since=${encodeURIComponent(since.toISOString())}&until=${encodeURIComponent(until.toISOString())}`;
-    const response = await fetch(url, {
-      headers: {
-        Accept: 'application/vnd.github+json',
-        'User-Agent': 'bala2006-profile-analytics',
-        'X-GitHub-Api-Version': '2022-11-28',
-      },
-    });
+    const response = await fetch(url, { headers: apiHeaders() });
     if (!response.ok) {
       const detail = (await response.text()).slice(0, 300);
       throw new Error(`${repo.name} commit history: GitHub API ${response.status}: ${detail}`);
@@ -165,6 +199,7 @@ async function listPublicRepositories() {
     .map((repo) => ({
       name: repo.name,
       url: repo.html_url,
+      languagesUrl: repo.languages_url,
       description: repo.description ?? '',
       primaryLanguage: repo.language ?? 'Unspecified',
       stars: repo.stargazers_count ?? 0,
@@ -174,6 +209,22 @@ async function listPublicRepositories() {
       area: Object.entries(projectAreas).find(([, names]) => names.includes(repo.name))?.[0] ?? 'Other projects',
     }))
     .sort((a, b) => a.name.localeCompare(b.name));
+}
+
+const getLanguages = (repo) => getJson(repo.languagesUrl, `${repo.name} languages`);
+
+function aggregateLanguages(perRepo) {
+  const totals = new Map();
+  for (const languages of perRepo) {
+    for (const [name, bytes] of Object.entries(languages)) {
+      if (!Number.isFinite(bytes) || bytes <= 0) continue;
+      totals.set(name, (totals.get(name) ?? 0) + bytes);
+    }
+  }
+  const totalBytes = [...totals.values()].reduce((sum, bytes) => sum + bytes, 0);
+  return [...totals.entries()]
+    .map(([name, bytes]) => ({ name, bytes, share: totalBytes ? bytes / totalBytes : 0 }))
+    .sort((a, b) => b.bytes - a.bytes || a.name.localeCompare(b.name));
 }
 
 function aggregateWeeks(repositories) {
@@ -192,7 +243,7 @@ function aggregateWeeks(repositories) {
         if (date.getTime() >= cutoff) last90Days += count;
       }
     }
-    return { name: repo.name, url: repo.url, commits90d: last90Days, weeks };
+    return { name: repo.name, url: repo.url, commits90d: last90Days };
   });
   const calendar = [...days.entries()]
     .sort(([a], [b]) => a.localeCompare(b))
@@ -208,431 +259,319 @@ function aggregateWeeks(repositories) {
   return { calendar, months, commits52w, repoStats };
 }
 
+// ---------------------------------------------------------------------------
+// Design system
+// ---------------------------------------------------------------------------
+
 function svgBase({ title, description, width, height, p, body }) {
-  return `<?xml version="1.0" encoding="UTF-8"?>\n` +
-    `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="title desc">` +
-    `<title id="title">${xml(title)}</title><desc id="desc">${xml(description)}</desc>` +
-    `<style>text{font-family:Inter,Segoe UI,Arial,sans-serif}.title{fill:${p.text};font-size:24px;font-weight:700}.subtitle{fill:${p.muted};font-size:13px}.label{fill:${p.text};font-size:13px}.muted{fill:${p.muted};font-size:12px}.tiny{fill:${p.subtle};font-size:10px}.value{fill:${p.text};font-size:29px;font-weight:700}.card{fill:${p.card};stroke:${p.border};stroke-width:1}.track{fill:${p.grid}}.accent{fill:${p.accent}}</style>` +
-    `<rect width="${width}" height="${height}" rx="22" fill="${p.background}"/>${body}</svg>`;
+  const style = [
+    `text{font-family:${fontFamily}}`,
+    `.title{fill:${p.fg};font-size:16px;font-weight:600}`,
+    `.sub{fill:${p.muted};font-size:12px}`,
+    `.note{fill:${p.faint};font-size:11px}`,
+    `.label{fill:${p.muted};font-size:11px}`,
+    `.value{fill:${p.fg};font-size:20px;font-weight:600}`,
+    `.repo{fill:${p.fg};font-size:12px}`,
+    `.count{fill:${p.muted};font-size:11px}`,
+    `.hero-handle{fill:${p.accent};font-size:12px;font-weight:600}`,
+    `.hero-name{fill:${p.fg};font-size:30px;font-weight:600;letter-spacing:-.5px}`,
+    `.hero-name-sm{fill:${p.fg};font-size:18px;font-weight:600;letter-spacing:-.2px}`,
+    `.hero-tag{fill:${p.muted};font-size:14px}`,
+    `.hero-eyebrow{fill:${p.faint};font-size:10px;font-weight:600;letter-spacing:.9px}`,
+    `.hero-building{fill:${p.fg};font-size:15px;font-weight:600}`,
+    `.hero-building-note{fill:${p.muted};font-size:12px}`,
+  ].join('');
+  return `<?xml version="1.0" encoding="UTF-8"?>\n`
+    + `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="t d">`
+    + `<title id="t">${xml(title)}</title><desc id="d">${xml(description)}</desc>`
+    + `<style>${style}</style>`
+    + `<rect width="${width}" height="${height}" rx="6" fill="${p.canvas}"/>`
+    + `<rect x="0.5" y="0.5" width="${width - 1}" height="${height - 1}" rx="6" fill="none" stroke="${p.border}"/>`
+    + body
+    + '</svg>';
+}
+
+const rule = (p, y, x0, x1) => `<line x1="${x0}" y1="${y}" x2="${x1}" y2="${y}" stroke="${p.border}"/>`;
+
+const cell = (p, x, y, width, height) => `<rect x="${x}" y="${y}" width="${width}" height="${height}" rx="6" fill="${p.subtle}"/>`;
+
+const panelHeader = (title, meta, p, width, inset) => `<text x="${inset}" y="32" class="title">${xml(title)}</text>`
+  + `<text x="${width - inset}" y="32" class="sub" text-anchor="end">${xml(meta)}</text>`;
+
+function languageSeries(data, p, limit = 5) {
+  const series = data.languages.slice(0, limit).map(({ name, share }) => ({
+    name, share, color: languageColor(name),
+  }));
+  const rest = data.languages.slice(limit);
+  if (rest.length) {
+    series.push({
+      name: rest.length === 1 ? rest[0].name : 'Other',
+      share: rest.reduce((sum, item) => sum + item.share, 0),
+      color: p.other,
+    });
+  }
+  return series;
+}
+
+// Segments are inset by the gap so adjacent similar hues stay separable.
+function stackedLanguages(series, x, y, width, height) {
+  let cursor = x;
+  return series.map((item) => {
+    const segmentWidth = item.share * width;
+    const rect = `<rect x="${cursor.toFixed(2)}" y="${y}" width="${Math.max(segmentWidth - 3, 1).toFixed(2)}" height="${height}" fill="${item.color}"><title>${xml(item.name)}: ${formatPercent(item.share)}</title></rect>`;
+    cursor += segmentWidth;
+    return rect;
+  }).join('');
+}
+
+function languageLegend(series, p, { x, y, columnWidth, columns }) {
+  return series.map((item, index) => {
+    const cx = x + (index % columns) * columnWidth;
+    const cy = y + Math.floor(index / columns) * 22;
+    return `<circle cx="${cx + 4}" cy="${cy - 4}" r="4" fill="${item.color}"/>`
+      + `<text x="${cx + 14}" y="${cy}" class="sub">${xml(short(item.name, 18))}</text>`
+      + `<text x="${cx + columnWidth - 34}" y="${cy}" class="count" text-anchor="end">${formatPercent(item.share)}</text>`;
+  }).join('');
+}
+
+function statCells(stats, p, { x, y, columns, cellWidth, cellHeight, gap }) {
+  return stats.map(([label, value], index) => {
+    const cx = x + (index % columns) * (cellWidth + gap);
+    const cy = y + Math.floor(index / columns) * (cellHeight + gap);
+    return cell(p, cx, cy, cellWidth, cellHeight)
+      + `<text x="${cx + 12}" y="${cy + 22}" class="label">${xml(label)}</text>`
+      + `<text x="${cx + 12}" y="${cy + 47}" class="value">${xml(formatNumber(value))}</text>`;
+  }).join('');
+}
+
+function heatmap(calendar, p, { x, y, cellSize, gap, weekOffset = 0, weekCount }) {
+  const byDate = new Map(calendar.map((day) => [day.date, day.commits]));
+  const first = new Date(`${calendar[0].date}T00:00:00Z`);
+  const last = new Date(`${calendar.at(-1).date}T00:00:00Z`);
+  const aligned = new Date(first);
+  aligned.setUTCDate(aligned.getUTCDate() - aligned.getUTCDay());
+  const totalWeeks = Math.ceil((Math.round((last - aligned) / 86400000) + 1) / 7);
+  const start = Math.max(0, weekOffset);
+  const end = Math.min(totalWeeks, start + weekCount);
+  const max = Math.max(1, ...calendar.map((day) => day.commits));
+  const pitch = cellSize + gap;
+
+  let cells = '';
+  let labels = '';
+  let previousMonth = '';
+  let lastLabel = -3;
+  for (let week = start; week < end; week += 1) {
+    const column = week - start;
+    const weekStart = new Date(aligned);
+    weekStart.setUTCDate(weekStart.getUTCDate() + week * 7);
+    const month = monthName(weekStart);
+    if (month !== previousMonth && column - lastLabel >= 3) {
+      labels += `<text x="${x + column * pitch}" y="${y - 10}" class="note">${month}</text>`;
+      previousMonth = month;
+      lastLabel = column;
+    }
+    for (let dow = 0; dow < 7; dow += 1) {
+      const date = new Date(weekStart);
+      date.setUTCDate(date.getUTCDate() + dow);
+      if (date < first || date > last) continue;
+      const key = date.toISOString().slice(0, 10);
+      const count = byDate.get(key) ?? 0;
+      const level = count === 0 ? 0 : Math.min(4, Math.max(1, Math.ceil((count / max) * 4)));
+      cells += `<rect x="${x + column * pitch}" y="${y + dow * pitch}" width="${cellSize}" height="${cellSize}" rx="2" fill="${p.levels[level]}"><title>${xml(key)}: ${count} ${count === 1 ? 'commit' : 'commits'}</title></rect>`;
+    }
+  }
+
+  const weekdays = [[1, 'Mon'], [3, 'Wed'], [5, 'Fri']]
+    .map(([dow, label]) => `<text x="${x - 8}" y="${y + dow * pitch + cellSize - 2}" class="note" text-anchor="end">${label}</text>`)
+    .join('');
+
+  return { body: labels + weekdays + cells, totalWeeks };
+}
+
+// Right-aligned against `right` so the legend never floats mid-panel.
+function heatLegend(p, { right, y }) {
+  const width = 28 + 5 * 15 + 2 + 27;
+  const x = right - width;
+  return `<text x="${x}" y="${y}" class="note">Less</text>`
+    + p.levels.map((color, index) => `<rect x="${x + 28 + index * 15}" y="${y - 8}" width="10" height="10" rx="2" fill="${color}"/>`).join('')
+    + `<text x="${x + 28 + 5 * 15 + 2}" y="${y}" class="note">More</text>`;
+}
+
+// One shared `peak` keeps every bar in a panel on the same scale.
+function repoRows(repos, p, { x, y, width, rowHeight, limit, peak, nameWidth = 190, stacked = false }) {
+  const rows = repos.slice(0, limit);
+  const scale = Math.max(1, peak ?? Math.max(...rows.map((repo) => repo.commits90d)));
+  return rows.map((repo, index) => {
+    const cy = y + index * rowHeight;
+    const label = `<text x="${x}" y="${cy}" class="repo">${xml(short(repo.name, 30))}</text>`
+      + `<text x="${x + width}" y="${cy}" class="count" text-anchor="end">${repo.commits90d}</text>`;
+    const barX = stacked ? x : x + nameWidth;
+    const barWidth = stacked ? width : width - nameWidth - 38;
+    const barY = stacked ? cy + 9 : cy - 7;
+    const length = (repo.commits90d / scale) * barWidth;
+    return label
+      + `<rect x="${barX}" y="${barY}" width="${barWidth}" height="6" rx="3" fill="${p.subtle}"/>`
+      + `<rect x="${barX}" y="${barY}" width="${Math.max(length, 1.5).toFixed(1)}" height="6" rx="3" fill="${p.success}"><title>${xml(repo.name)}: ${repo.commits90d} ${repo.commits90d === 1 ? 'commit' : 'commits'}</title></rect>`;
+  }).join('');
+}
+
+const byActivity = (repos) => [...repos]
+  .sort((a, b) => b.commits90d - a.commits90d || a.name.localeCompare(b.name));
+
+// ---------------------------------------------------------------------------
+// Panels
+// ---------------------------------------------------------------------------
+
+function heroSvg(_data, p) {
+  const body = `<text x="24" y="44" class="hero-handle">${xml(identity.handle)}</text>`
+    + `<text x="24" y="82" class="hero-name">${xml(identity.name)}</text>`
+    + `<text x="24" y="110" class="hero-tag">${xml(identity.tagline)}</text>`
+    + rule(p, 132, 24, 776)
+    + `<text x="24" y="156" class="hero-eyebrow">${xml(identity.buildingLabel.toUpperCase())}</text>`
+    + `<text x="24" y="178" class="hero-building">${xml(identity.buildingName)}</text>`
+    + `<text x="${24 + identity.buildingName.length * 9 + 16}" y="178" class="hero-building-note">${xml(identity.buildingNote)}</text>`;
+  return svgBase({
+    title: `${identity.name} introduction`,
+    description: `${identity.handle}. ${identity.tagline} Currently building ${identity.buildingName}, ${identity.buildingNote}`,
+    width: 800, height: 202, p, body,
+  });
+}
+
+function heroMobileSvg(_data, p) {
+  const body = `<text x="20" y="40" class="hero-handle">${xml(identity.handle)}</text>`
+    + `<text x="20" y="70" class="hero-name-sm">${xml(identity.name)}</text>`
+    + `<text x="20" y="96" class="hero-tag">${xml('I build AI systems, research tools, and apps,')}</text>`
+    + `<text x="20" y="116" class="hero-tag">${xml('then make the results easy to inspect.')}</text>`
+    + rule(p, 134, 20, 380)
+    + `<text x="20" y="158" class="hero-eyebrow">${xml(identity.buildingLabel.toUpperCase())}</text>`
+    + `<text x="20" y="178" class="hero-building">${xml(identity.buildingName)}</text>`
+    + `<text x="20" y="198" class="hero-building-note">${xml('An on-device assistant that plans tasks,')}</text>`
+    + `<text x="20" y="214" class="hero-building-note">${xml('calls tools, and talks to MCP servers.')}</text>`;
+  return svgBase({
+    title: `${identity.name} introduction`,
+    description: `${identity.handle}. ${identity.tagline} Currently building ${identity.buildingName}, ${identity.buildingNote}`,
+    width: 400, height: 236, p, body,
+  });
 }
 
 function overviewSvg(data, p) {
-  const metrics = [
-    ['PUBLIC REPOS', data.repos.length, 'owned, non-fork repositories'],
-    ['STARS EARNED', data.stars, 'across public projects'],
-    ['PULL REQUESTS', data.pullRequests, 'opened in public repositories'],
-    ['ISSUES OPENED', data.issues, 'in public repositories'],
-    ['COMMITS · 52 WEEKS', data.commits52w, 'all authors · default branches'],
-    ['ACTIVE REPOS · 90 DAYS', data.activeRepos90d, 'with default-branch commits'],
+  const series = languageSeries(data, p);
+  const stats = [
+    ['Public repos', data.repos.length],
+    ['Commits · 52w', data.commits52w],
+    ['Active · 90d', data.activeRepos90d],
+    ['Stars', data.stars],
+    ['Pull requests', data.pullRequests],
+    ['Issues', data.issues],
   ];
-  const cardWidth = 352;
-  const cards = metrics.map(([label, value, note], index) => {
-    const x = 40 + (index % 3) * 376;
-    const y = 100 + Math.floor(index / 3) * 105;
-    return `<g><rect class="card" x="${x}" y="${y}" width="${cardWidth}" height="90" rx="15"/>` +
-      `<text x="${x + 18}" y="${y + 24}" class="tiny">${xml(label)}</text>` +
-      `<text x="${x + 18}" y="${y + 57}" class="value">${xml(formatNumber(value))}</text>` +
-      `<text x="${x + 105}" y="${y + 56}" class="tiny">${xml(note)}</text></g>`;
-  }).join('');
-
-  const languages = new Map();
-  for (const repo of data.repos) {
-    const language = repo.primaryLanguage || 'Unspecified';
-    languages.set(language, (languages.get(language) ?? 0) + 1);
-  }
-  const languageRows = [...languages.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, 7);
-  const themeCounts = new Map();
-  for (const repo of data.repos) themeCounts.set(repo.area, (themeCounts.get(repo.area) ?? 0) + 1);
-  const areaRows = [...themeCounts.entries()].sort((a, b) => b[1] - a[1]);
-  const maxLanguage = Math.max(1, ...languageRows.map(([, count]) => count));
-  const maxArea = Math.max(1, ...areaRows.map(([, count]) => count));
-  const leftRows = languageRows.map(([name, count], index) => {
-    const y = 363 + index * 25;
-    const width = 295 * count / maxLanguage;
-    return `<text x="58" y="${y + 4}" class="label">${xml(short(name, 18))}</text>` +
-      `<rect class="track" x="220" y="${y - 10}" width="295" height="12" rx="6"/>` +
-      `<rect x="220" y="${y - 10}" width="${width.toFixed(1)}" height="12" rx="6" fill="${index % 2 ? p.accent2 : p.accent}"/>` +
-      `<text x="526" y="${y + 2}" class="muted">${count}</text>`;
-  }).join('');
-  const rightRows = areaRows.map(([name, count], index) => {
-    const y = 363 + index * 25;
-    const width = 260 * count / maxArea;
-    return `<text x="640" y="${y + 4}" class="label">${xml(short(name, 28))}</text>` +
-      `<rect class="track" x="842" y="${y - 10}" width="260" height="12" rx="6"/>` +
-      `<rect x="842" y="${y - 10}" width="${width.toFixed(1)}" height="12" rx="6" fill="${index % 2 ? p.accent3 : p.accent}"/>` +
-      `<text x="1114" y="${y + 2}" class="muted">${count}</text>`;
-  }).join('');
-
-  const body = `<text x="40" y="52" class="title">PROFILE ANALYTICS</text>` +
-    `<text x="40" y="77" class="subtitle">Public, non-fork repositories · refreshed ${xml(data.generatedAt.slice(0, 10))}</text>` +
-    cards +
-    `<rect class="card" x="40" y="325" width="530" height="218" rx="16"/>` +
-    `<text x="58" y="351" class="label">Primary language by repository</text>` + leftRows +
-    `<rect class="card" x="590" y="325" width="570" height="218" rx="16"/>` +
-    `<text x="610" y="351" class="label">Projects by focus area</text>` + rightRows +
-    `<text x="40" y="573" class="tiny">Commit counts include all authors on public default branches. PR and issue counts cover items authored by bala2006 in public repositories.</text>`;
+  const body = panelHeader('Profile overview', `Updated ${formatDate(data.generatedAt)}`, p, 800, 20)
+    + rule(p, 46, 20, 780)
+    + statCells(stats, p, { x: 20, y: 62, columns: 3, cellWidth: 245, cellHeight: 62, gap: 12 })
+    + rule(p, 214, 20, 780) +
+    `<text x="20" y="238" class="label">Code by language</text>`
+    + `<text x="780" y="238" class="note" text-anchor="end">share of bytes on default branches</text>`
+    + `<clipPath id="langbar"><rect x="20" y="248" width="760" height="10" rx="5"/></clipPath>`
+    + `<g clip-path="url(#langbar)">${stackedLanguages(series, 20, 248, 760, 10)}</g>`
+    + languageLegend(series, p, { x: 20, y: 282, columnWidth: 254, columns: 3 });
   return svgBase({
-    title: 'GitHub profile analytics overview',
-    description: 'Repository, star, fork, commit, language, and project-area summaries for public non-fork repositories.',
-    width: 1200, height: 600, p, body,
+    title: 'GitHub profile overview',
+    description: `Repository, star, pull request, issue and commit totals, plus the share of code by language across ${data.repos.length} public non-fork repositories.`,
+    width: 800, height: 318, p, body,
   });
 }
 
 function overviewMobileSvg(data, p) {
-  const metrics = [
-    ['REPOSITORIES', data.repos.length], ['STARS', data.stars],
-    ['PUBLIC PRS', data.pullRequests], ['PUBLIC ISSUES', data.issues],
-    ['COMMITS · 52W', data.commits52w], ['ACTIVE · 90D', data.activeRepos90d],
+  const series = languageSeries(data, p);
+  const stats = [
+    ['Repos', data.repos.length],
+    ['Commits · 52w', data.commits52w],
+    ['Active · 90d', data.activeRepos90d],
+    ['Stars', data.stars],
+    ['PRs', data.pullRequests],
+    ['Issues', data.issues],
   ];
-  const cards = metrics.map(([label, value], index) => {
-    const x = 18 + (index % 2) * 166;
-    const y = 82 + Math.floor(index / 2) * 92;
-    return `<rect class="card" x="${x}" y="${y}" width="158" height="79" rx="12"/>
-<text x="${x + 13}" y="${y + 23}" class="tiny">${xml(label)}</text>
-<text x="${x + 13}" y="${y + 60}" class="value">${xml(formatNumber(value))}</text>`;
-  }).join('');
-
-  const languages = new Map();
-  const areas = new Map();
-  for (const repo of data.repos) {
-    languages.set(repo.primaryLanguage, (languages.get(repo.primaryLanguage) ?? 0) + 1);
-    areas.set(repo.area, (areas.get(repo.area) ?? 0) + 1);
-  }
-  const languageRows = [...languages.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, 7);
-  const areaRows = [...areas.entries()].sort((a, b) => b[1] - a[1]);
-  const mobileAreaNames = {
-    'AI systems & developer tools': 'AI systems & tools',
-    'Forecasting & reliability': 'Forecasting',
-    'Machine learning research': 'ML research',
-    'Apps & creative tools': 'Apps & creative',
-    'Experiments & community tools': 'Experiments',
-  };
-  const languageMax = Math.max(1, ...languageRows.map(([, count]) => count));
-  const areaMax = Math.max(1, ...areaRows.map(([, count]) => count));
-  const lang = languageRows.map(([name, count], index) => {
-    const y = 420 + index * 25;
-    return `<text x="35" y="${y}" class="label">${xml(short(name, 15))}</text>
-<rect class="track" x="155" y="${y - 10}" width="145" height="10" rx="5"/>
-<rect x="155" y="${y - 10}" width="${(145 * count / languageMax).toFixed(1)}" height="10" rx="5" fill="${index % 2 ? p.accent2 : p.accent}"/>
-<text x="308" y="${y}" class="muted">${count}</text>`;
-  }).join('');
-  const area = areaRows.map(([name, count], index) => {
-    const y = 672 + index * 30;
-    return `<text x="35" y="${y}" class="label">${xml(mobileAreaNames[name] ?? short(name, 23))}</text>
-<rect class="track" x="240" y="${y - 10}" width="72" height="10" rx="5"/>
-<rect x="240" y="${y - 10}" width="${(72 * count / areaMax).toFixed(1)}" height="10" rx="5" fill="${index % 2 ? p.accent3 : p.accent}"/>
-<text x="320" y="${y}" class="muted">${count}</text>`;
-  }).join('');
-  const body = `<text x="18" y="38" class="title">PROFILE ANALYTICS</text>
-<text x="18" y="60" class="subtitle">Public projects · updated ${xml(data.generatedAt.slice(0, 10))}</text>
-${cards}
-<rect class="card" x="18" y="371" width="324" height="218" rx="14"/>
-<text x="35" y="394" class="label">Primary language by repository</text>${lang}
-<rect class="card" x="18" y="620" width="324" height="205" rx="14"/>
-<text x="35" y="646" class="label">Projects by focus area</text>${area}
-<text x="18" y="850" class="tiny">Commit counts include all authors on default branches.</text>`;
+  const body = panelHeader('Overview', formatDate(data.generatedAt), p, 400, 20)
+    + rule(p, 46, 20, 380)
+    + statCells(stats, p, { x: 20, y: 62, columns: 2, cellWidth: 174, cellHeight: 62, gap: 12 })
+    + rule(p, 286, 20, 380) +
+    `<text x="20" y="310" class="label">Code by language</text>`
+    + `<text x="20" y="328" class="note">share of bytes on default branches</text>`
+    + `<clipPath id="langbar"><rect x="20" y="340" width="360" height="8" rx="4"/></clipPath>`
+    + `<g clip-path="url(#langbar)">${stackedLanguages(series, 20, 340, 360, 8)}</g>`
+    + languageLegend(series, p, { x: 20, y: 372, columnWidth: 184, columns: 2 });
   return svgBase({
-    title: 'GitHub profile analytics overview for phones',
-    description: 'Public repositories, stars, pull requests, issues, commits, active projects, languages, and focus areas.',
-    width: 360, height: 870, p, body,
+    title: 'GitHub profile overview',
+    description: `Repository, star, pull request, issue and commit totals, plus the share of code by language across ${data.repos.length} public non-fork repositories.`,
+    width: 400, height: 436, p, body,
   });
 }
 
-function calendarSvg(data, p) {
-  const cells = data.calendar;
-  const first = cells.length ? new Date(`${cells[0].date}T00:00:00Z`) : new Date();
-  const firstSunday = new Date(first);
-  firstSunday.setUTCDate(firstSunday.getUTCDate() - firstSunday.getUTCDay());
-  const lookup = new Map(cells.map((day) => [day.date, day.commits]));
-  const max = Math.max(1, ...cells.map((day) => day.commits));
-  const days = 7;
-  const weeks = 53;
-  const cell = 13;
-  const gap = 4;
-  const x0 = 90;
-  const y0 = 91;
-  let rects = '';
-  for (let week = 0; week < weeks; week += 1) {
-    for (let dow = 0; dow < days; dow += 1) {
-      const date = new Date(firstSunday);
-      date.setUTCDate(date.getUTCDate() + week * 7 + dow);
-      const key = date.toISOString().slice(0, 10);
-      if (date < first || date > new Date(`${cells.at(-1)?.date ?? key}T00:00:00Z`)) continue;
-      const count = lookup.get(key) ?? 0;
-      const level = count === 0 ? 0 : Math.min(4, Math.max(1, Math.ceil(count / max * 4)));
-      const x = x0 + week * (cell + gap);
-      const y = y0 + dow * (cell + gap);
-      rects += `<rect x="${x}" y="${y}" width="${cell}" height="${cell}" rx="3" fill="${p.levels[level]}"><title>${xml(key)}: ${count} commits</title></rect>`;
+function activitySvg(data, p) {
+  const grid = heatmap(data.calendar, p, { x: 60, y: 72, cellSize: 10, gap: 3, weekCount: 53 });
+  const repos = byActivity(data.repoStats).slice(0, 6);
+  const peak = Math.max(...repos.map((repo) => repo.commits90d));
+  const body = panelHeader(
+    'Commit activity',
+    `${formatDate(data.calendar[0].date)} – ${formatDate(data.calendar.at(-1).date)}`,
+    p, 800, 20,
+  )
+    + rule(p, 46, 20, 780)
+    + grid.body
+    + heatLegend(p, { right: 780, y: 186 })
+    + rule(p, 206, 20, 780)
+    + `<text x="20" y="230" class="label">Most active repositories · last 90 days</text>`
+    + `<text x="780" y="230" class="note" text-anchor="end">default-branch commits</text>`
+    + repoRows(repos, p, { x: 20, y: 260, width: 760, rowHeight: 26, limit: 6, peak, nameWidth: 210 });
+  return svgBase({
+    title: 'Daily commit activity for the last 52 weeks',
+    description: `A contribution calendar of daily commits across public repository default branches, followed by the most active repositories over the last 90 days.`,
+    width: 800, height: 412, p, body,
+  });
+}
+
+function activityMobileSvg(data, p) {
+  const full = heatmap(data.calendar, p, { x: 44, y: 112, cellSize: 9, gap: 3, weekCount: 52 });
+  const earlier = heatmap(data.calendar, p, { x: 44, y: 112, cellSize: 9, gap: 3, weekCount: 26 });
+  const recent = heatmap(data.calendar, p, {
+    x: 44, y: 248, cellSize: 9, gap: 3, weekOffset: Math.max(0, full.totalWeeks - 26), weekCount: 26,
+  });
+  const repos = byActivity(data.repoStats).slice(0, 5);
+  const peak = Math.max(...repos.map((repo) => repo.commits90d));
+  const body = panelHeader('Commit activity', '', p, 400, 20)
+    + `<text x="20" y="48" class="sub">Public default branches · 52 weeks</text>`
+    + rule(p, 62, 20, 380)
+    + `<text x="20" y="84" class="label">Earlier 26 weeks</text>`
+    + earlier.body
+    + `<text x="20" y="220" class="label">Recent 26 weeks</text>`
+    + recent.body
+    + heatLegend(p, { right: 380, y: 352 })
+    + rule(p, 370, 20, 380)
+    + `<text x="20" y="394" class="label">Most active · last 90 days</text>`
+    + repoRows(repos, p, { x: 20, y: 420, width: 360, rowHeight: 34, limit: 5, peak, stacked: true });
+  return svgBase({
+    title: 'Daily commit activity for the last 52 weeks',
+    description: 'A contribution calendar of daily commits across public repository default branches, split into two 26-week panels, followed by the most active repositories over the last 90 days.',
+    width: 400, height: 580, p, body,
+  });
+}
+
+const panels = {
+  hero: heroSvg,
+  'hero-mobile': heroMobileSvg,
+  overview: overviewSvg,
+  'overview-mobile': overviewMobileSvg,
+  activity: activitySvg,
+  'activity-mobile': activityMobileSvg,
+};
+
+async function renderAll(data, { assetsDir = path.join(outDir, 'assets'), analyticsOutput = analyticsDir } = {}) {
+  await mkdir(analyticsOutput, { recursive: true });
+  for (const [name, render] of Object.entries(panels)) {
+    const target = name.startsWith('hero') ? assetsDir : analyticsOutput;
+    for (const [mode, palette] of Object.entries(palettes)) {
+      await writeFile(path.join(target, `${name}-${mode}.svg`), render(data, palette), 'utf8');
     }
   }
-  const monthLabels = [];
-  let previousMonth = '';
-  for (let week = 0; week < weeks; week += 1) {
-    const date = new Date(firstSunday);
-    date.setUTCDate(date.getUTCDate() + week * 7);
-    const month = date.toLocaleString('en-US', { month: 'short', timeZone: 'UTC' });
-    if (month !== previousMonth && date >= first) {
-      monthLabels.push(`<text x="${x0 + week * (cell + gap)}" y="74" class="tiny">${month}</text>`);
-      previousMonth = month;
-    }
-  }
-  const labels = [['Mon', 1], ['Wed', 3], ['Fri', 5]].map(([label, dow]) =>
-    `<text x="48" y="${y0 + dow * (cell + gap) + 10}" class="tiny">${label}</text>`).join('');
-  const legendX = 900;
-  const legend = `<text x="${legendX - 76}" y="249" class="tiny">Less</text>` +
-    p.levels.map((color, index) => `<rect x="${legendX + index * 20}" y="238" width="13" height="13" rx="3" fill="${color}"/>`).join('') +
-    `<text x="${legendX + 110}" y="249" class="tiny">More</text>`;
-  const body = `<text x="40" y="42" class="title">CUSTOM COMMIT CALENDAR</text>` +
-    `<text x="40" y="63" class="subtitle">Daily commits across public repository default branches · rolling 52 weeks</text>` +
-    monthLabels.join('') + labels + rects + legend +
-    `<text x="40" y="279" class="tiny">A commit is counted on the date it appears in the repository’s weekly GitHub activity summary.</text>`;
-  return svgBase({
-    title: 'Custom GitHub commit calendar',
-    description: 'A daily heatmap of commits across public non-fork repository default branches for the rolling 52-week period.',
-    width: 1200, height: 295, p, body,
-  });
-}
-
-function calendarMobileSvg(data, p) {
-  const lookup = new Map(data.calendar.map((day) => [day.date, day.commits]));
-  const end = new Date(`${data.calendar.at(-1)?.date ?? new Date().toISOString().slice(0, 10)}T00:00:00Z`);
-  const firstSunday = new Date(end);
-  firstSunday.setUTCDate(firstSunday.getUTCDate() - firstSunday.getUTCDay() - 51 * 7);
-  const max = Math.max(1, ...data.calendar.map((day) => day.commits));
-  const cells = [];
-  for (let week = 0; week < 52; week += 1) {
-    const half = Math.floor(week / 26);
-    const column = week % 26;
-    for (let dow = 0; dow < 7; dow += 1) {
-      const date = new Date(firstSunday);
-      date.setUTCDate(date.getUTCDate() + week * 7 + dow);
-      if (date > end) continue;
-      const key = date.toISOString().slice(0, 10);
-      const count = lookup.get(key) ?? 0;
-      const level = count === 0 ? 0 : Math.max(1, Math.ceil(count / max * 4));
-      const x = 33 + column * 12;
-      const y = 100 + half * 129 + dow * 12;
-      cells.push(`<rect x="${x}" y="${y}" width="9" height="9" rx="2" fill="${p.levels[level]}"><title>${xml(key)}: ${count} commits</title></rect>`);
-    }
-  }
-  const labels = [100, 229].map((start) => [['M', 1], ['W', 3], ['F', 5]].map(([label, dow]) =>
-    `<text x="17" y="${start + dow * 12 + 8}" class="tiny">${label}</text>`).join('')).join('');
-  const legend = p.levels.map((color, index) =>
-    `<rect x="${208 + index * 21}" y="358" width="13" height="13" rx="2" fill="${color}"/>`).join('');
-  const body = `<text x="18" y="36" class="title">COMMIT CALENDAR</text>
-<text x="18" y="57" class="subtitle">Daily commits · rolling 52 weeks</text>
-<text x="18" y="85" class="muted">Earlier 26 weeks</text>
-<text x="18" y="214" class="muted">Recent 26 weeks</text>
-${labels}${cells.join('')}
-<text x="18" y="369" class="tiny">Less</text>${legend}<text x="318" y="369" class="tiny">More</text>
-<text x="18" y="391" class="tiny">Public repositories · default branches · all authors</text>`;
-  return svgBase({
-    title: 'Custom GitHub commit calendar for phones',
-    description: 'A daily commit heatmap across public repository default branches, split into two 26-week panels for readability.',
-    width: 360, height: 408, p, body,
-  });
-}
-
-function activityStripSvg(data, p) {
-  const weekCounts = new Map();
-  for (const day of data.calendar) {
-    const date = new Date(`${day.date}T00:00:00Z`);
-    date.setUTCDate(date.getUTCDate() - date.getUTCDay());
-    const week = date.toISOString().slice(0, 10);
-    weekCounts.set(week, (weekCounts.get(week) ?? 0) + day.commits);
-  }
-  const values = [...weekCounts.entries()].sort(([a], [b]) => a.localeCompare(b)).slice(-52);
-  const max = Math.max(1, ...values.map(([, count]) => count));
-  const x0 = 58;
-  const step = 21;
-  const bottom = 138;
-  const cell = 12;
-  const gap = 3;
-  const points = [];
-  const pixels = values.map(([week, count], index) => {
-    const x = x0 + index * step;
-    const levels = count === 0 ? 0 : Math.max(1, Math.ceil(count / max * 5));
-    const top = bottom - levels * (cell + gap) + (cell + gap) / 2;
-    points.push(`${x + cell / 2},${top}`);
-    let column = '';
-    for (let row = 0; row < 5; row += 1) {
-      const y = bottom - row * (cell + gap);
-      const color = row < levels ? p.levels[Math.min(4, Math.max(1, levels - row))] : p.levels[0];
-      column += `<rect x="${x}" y="${y}" width="${cell}" height="${cell}" rx="2" fill="${color}"/>`;
-    }
-    return `<g><title>Week of ${xml(week)}: ${count} commits</title>${column}</g>`;
-  }).join('');
-  const path = points.length > 1
-    ? `<polyline points="${points.join(' ')}" fill="none" stroke="${p.accent}" stroke-width="2" opacity=".58" stroke-linejoin="round"/>`
-    : '';
-  const last = points.at(-1)?.split(',') ?? [0, 0];
-  const marker = points.length
-    ? `<circle cx="${last[0]}" cy="${last[1]}" r="6" fill="${p.accent3}" stroke="${p.background}" stroke-width="2"/>`
-    : '';
-  const body = `<text x="42" y="43" class="title">52-WEEK ACTIVITY TRAIL</text>` +
-    `<text x="42" y="65" class="subtitle">Each column is a week · brighter squares mean more default-branch commits</text>` +
-    path + pixels + marker +
-    `<text x="42" y="184" class="tiny">Older</text><text x="1110" y="184" class="tiny">Now</text>`;
-  return svgBase({
-    title: '52-week GitHub activity trail',
-    description: 'A compact pixel graph of weekly commits across public non-fork repository default branches; brightness reflects commit count.',
-    width: 1200, height: 205, p, body,
-  });
-}
-
-function activityStripMobileSvg(data, p) {
-  const weekCounts = new Map();
-  for (const day of data.calendar) {
-    const date = new Date(`${day.date}T00:00:00Z`);
-    date.setUTCDate(date.getUTCDate() - date.getUTCDay());
-    const week = date.toISOString().slice(0, 10);
-    weekCounts.set(week, (weekCounts.get(week) ?? 0) + day.commits);
-  }
-  const values = [...weekCounts.entries()].sort(([a], [b]) => a.localeCompare(b)).slice(-52);
-  const max = Math.max(1, ...values.map(([, count]) => count));
-  const columns = values.map(([week, count], index) => {
-    const x = 24 + (index % 26) * 12;
-    const bottom = index < 26 ? 116 : 198;
-    const level = count === 0 ? 0 : Math.max(1, Math.ceil(count / max * 3));
-    return `<g><title>Week of ${xml(week)}: ${count} commits</title>${Array.from({ length: 3 }, (_, row) =>
-      `<rect x="${x}" y="${bottom - row * 12}" width="9" height="9" rx="2" fill="${row < level ? p.levels[Math.min(4, level + 1)] : p.levels[0]}"/>`).join('')}</g>`;
-  }).join('');
-  const body = `<text x="18" y="36" class="title">52-WEEK ACTIVITY TRAIL</text>
-<text x="18" y="57" class="subtitle">Brighter pixels mean more commits</text>
-<text x="18" y="79" class="muted">Older weeks</text>
-<text x="18" y="161" class="muted">Recent weeks</text>
-${columns}
-<text x="18" y="224" class="tiny">Public default branches · all authors</text>`;
-  return svgBase({
-    title: '52-week activity trail for phones',
-    description: 'A two-row pixel graph of weekly commits on public repository default branches.',
-    width: 360, height: 240, p, body,
-  });
-}
-
-function commitAnalysisSvg(data, p) {
-  const body = [`<text x="40" y="48" class="title">COMMIT &amp; REPOSITORY ANALYSIS</text>`,
-    `<text x="40" y="70" class="subtitle">Monthly commit trend · recent repository activity · repository stars</text>`];
-
-  const monthX = 74;
-  const monthY = 136;
-  const chartWidth = 480;
-  const chartHeight = 180;
-  const maxMonth = Math.max(1, ...data.months.map((m) => m.commits));
-  body.push(`<rect class="card" x="32" y="91" width="548" height="262" rx="16"/>`);
-  body.push(`<text x="52" y="119" class="label">Commits by month</text>`);
-  body.push(`<line x1="${monthX}" y1="${monthY + chartHeight}" x2="${monthX + chartWidth}" y2="${monthY + chartHeight}" stroke="${p.grid}"/>`);
-  const barGap = 9;
-  const barWidth = Math.max(10, (chartWidth - barGap * (data.months.length - 1)) / Math.max(1, data.months.length));
-  for (let i = 0; i < data.months.length; i += 1) {
-    const item = data.months[i];
-    const height = Math.max(2, chartHeight * item.commits / maxMonth);
-    const x = monthX + i * (barWidth + barGap);
-    const y = monthY + chartHeight - height;
-    const monthLabel = new Date(`${item.month}-01T00:00:00Z`).toLocaleString('en-US', { month: 'short', timeZone: 'UTC' });
-    body.push(`<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${barWidth.toFixed(1)}" height="${height.toFixed(1)}" rx="4" fill="${i % 3 === 0 ? p.accent2 : p.accent}"><title>${xml(item.month)}: ${item.commits} commits</title></rect>`);
-    body.push(`<text x="${(x + barWidth / 2).toFixed(1)}" y="${monthY + chartHeight + 18}" class="tiny" text-anchor="middle">${monthLabel}</text>`);
-  }
-
-  const recent = [...data.repoStats].sort((a, b) => b.commits90d - a.commits90d || a.name.localeCompare(b.name)).slice(0, 7);
-  const maxRecent = Math.max(1, ...recent.map((r) => r.commits90d));
-  body.push(`<rect class="card" x="600" y="91" width="568" height="262" rx="16"/>`);
-  body.push(`<text x="620" y="119" class="label">Most active repositories · last 90 days</text>`);
-  recent.forEach((repo, index) => {
-    const y = 154 + index * 26;
-    const width = 285 * repo.commits90d / maxRecent;
-    body.push(`<text x="620" y="${y + 3}" class="muted">${xml(short(repo.name, 22))}</text>`);
-    body.push(`<rect class="track" x="800" y="${y - 9}" width="285" height="11" rx="5.5"/>`);
-    body.push(`<rect x="800" y="${y - 9}" width="${width.toFixed(1)}" height="11" rx="5.5" fill="${index % 2 ? p.accent2 : p.accent}"><title>${xml(repo.name)}: ${repo.commits90d} commits</title></rect>`);
-    body.push(`<text x="1095" y="${y + 3}" class="tiny">${repo.commits90d}</text>`);
-  });
-
-  const stars = [...data.repos].filter((repo) => repo.stars > 0)
-    .sort((a, b) => b.stars - a.stars || a.name.localeCompare(b.name)).slice(0, 8);
-  const maxStars = Math.max(1, ...stars.map((r) => r.stars));
-  body.push(`<rect class="card" x="32" y="373" width="1136" height="246" rx="16"/>`);
-  body.push(`<text x="52" y="402" class="label">Most starred public repositories</text>`);
-  const left = stars.slice(0, 4);
-  const right = stars.slice(4, 8);
-  const addStarRows = (rows, startX) => rows.forEach((repo, index) => {
-    const y = 444 + index * 39;
-    const barX = startX + 155;
-    const barWidth = 200 * repo.stars / maxStars;
-    body.push(`<text x="${startX}" y="${y + 4}" class="label">${xml(short(repo.name, 22))}</text>`);
-    body.push(`<rect class="track" x="${barX}" y="${y - 9}" width="280" height="14" rx="7"/>`);
-    body.push(`<rect x="${barX}" y="${y - 9}" width="${barWidth.toFixed(1)}" height="14" rx="7" fill="${p.accent3}"><title>${xml(repo.name)}: ${repo.stars} stars · ${repo.forks} forks</title></rect>`);
-    body.push(`<text x="${barX + 210}" y="${y + 4}" class="muted">★ ${repo.stars} · forks ${repo.forks}</text>`);
-  });
-  addStarRows(left, 52);
-  addStarRows(right, 620);
-  body.push(`<text x="40" y="647" class="tiny">All counts use public, non-fork repositories; commit counts cover each repository’s default branch.</text>`);
-
-  return svgBase({
-    title: 'GitHub commit and repository analysis',
-    description: 'Monthly commit bar chart, repositories with most default-branch commits in the last 90 days, and most-starred repositories.',
-    width: 1200, height: 675, p, body: body.join(''),
-  });
-}
-
-function commitAnalysisMobileSvg(data, p) {
-  const body = [`<text x="18" y="38" class="title">COMMIT &amp; REPO ANALYSIS</text>
-<text x="18" y="59" class="subtitle">Monthly trend · recent activity · stars</text>`];
-  body.push(`<rect class="card" x="18" y="78" width="324" height="245" rx="14"/>
-<text x="35" y="105" class="label">Commits by month</text>
-<line x1="34" y1="276" x2="329" y2="276" stroke="${p.grid}"/>`);
-  const maxMonth = Math.max(1, ...data.months.map((item) => item.commits));
-  data.months.forEach((item, index) => {
-    const x = 34 + index * 25;
-    const height = Math.max(2, 145 * item.commits / maxMonth);
-    const y = 276 - height;
-    const month = new Date(`${item.month}-01T00:00:00Z`).toLocaleString('en-US', { month: 'short', timeZone: 'UTC' });
-    body.push(`<rect x="${x}" y="${y.toFixed(1)}" width="18" height="${height.toFixed(1)}" rx="3" fill="${index % 3 === 0 ? p.accent2 : p.accent}"><title>${xml(item.month)}: ${item.commits} commits</title></rect>
-<text x="${x + 9}" y="296" class="tiny" text-anchor="middle">${month.slice(0, 2)}</text>`);
-  });
-
-  const recent = [...data.repoStats].sort((a, b) => b.commits90d - a.commits90d || a.name.localeCompare(b.name)).slice(0, 7);
-  const maxRecent = Math.max(1, ...recent.map((repo) => repo.commits90d));
-  body.push(`<rect class="card" x="18" y="343" width="324" height="258" rx="14"/>
-<text x="35" y="371" class="label">Most active · last 90 days</text>`);
-  recent.forEach((repo, index) => {
-    const y = 400 + index * 27;
-    const width = 100 * repo.commits90d / maxRecent;
-    body.push(`<text x="35" y="${y}" class="muted">${xml(short(repo.name, 17))}</text>
-<rect class="track" x="217" y="${y - 10}" width="100" height="10" rx="5"/>
-<rect x="217" y="${y - 10}" width="${width.toFixed(1)}" height="10" rx="5" fill="${index % 2 ? p.accent2 : p.accent}"><title>${xml(repo.name)}: ${repo.commits90d} commits</title></rect>
-<text x="322" y="${y}" class="tiny">${repo.commits90d}</text>`);
-  });
-
-  const stars = [...data.repos].filter((repo) => repo.stars > 0)
-    .sort((a, b) => b.stars - a.stars || a.name.localeCompare(b.name)).slice(0, 6);
-  const maxStars = Math.max(1, ...stars.map((repo) => repo.stars));
-  body.push(`<rect class="card" x="18" y="621" width="324" height="207" rx="14"/>
-<text x="35" y="649" class="label">Most starred public projects</text>`);
-  stars.forEach((repo, index) => {
-    const y = 677 + index * 26;
-    const width = 85 * repo.stars / maxStars;
-    body.push(`<text x="35" y="${y}" class="muted">${xml(short(repo.name, 19))}</text>
-<rect class="track" x="216" y="${y - 10}" width="85" height="10" rx="5"/>
-<rect x="216" y="${y - 10}" width="${width.toFixed(1)}" height="10" rx="5" fill="${p.accent3}"><title>${xml(repo.name)}: ${repo.stars} stars</title></rect>
-<text x="307" y="${y}" class="tiny">★${repo.stars}</text>`);
-  });
-  body.push(`<text x="18" y="856" class="tiny">Commits cover public default branches · all authors.</text>`);
-  return svgBase({
-    title: 'GitHub commit and repository analysis for phones',
-    description: 'Stacked charts showing monthly commits, recently active repositories, and most-starred projects.',
-    width: 360, height: 875, p, body: body.join(''),
-  });
-}
-
-function placeholderSvg(title, message, p) {
-  const body = `<text x="40" y="52" class="title">${xml(title)}</text>` +
-    `<text x="40" y="80" class="subtitle">${xml(message)}</text>` +
-    `<rect class="card" x="40" y="112" width="1120" height="115" rx="16"/>` +
-    `<circle cx="88" cy="169" r="19" fill="${p.cardAlt}" stroke="${p.accent}"/>` +
-    `<path d="M88 157v13l9 5" fill="none" stroke="${p.accent}" stroke-width="2" stroke-linecap="round"/>` +
-    `<text x="126" y="164" class="label">Waiting for the first scheduled analytics refresh</text>` +
-    `<text x="126" y="188" class="muted">This panel will populate from public GitHub repository data.</text>`;
-  return svgBase({ title, description: message, width: 1200, height: 260, p, body });
 }
 
 async function main() {
@@ -640,11 +579,14 @@ async function main() {
   await mkdir(dataDir, { recursive: true });
   const repos = await listPublicRepositories();
   const activity = [];
+  const languagesByRepo = [];
   for (const repo of repos) {
-    const weeks = await getCommitActivity(repo);
+    const [weeks, languages] = await Promise.all([getCommitActivity(repo), getLanguages(repo)]);
     activity.push({ repo, weeks });
+    languagesByRepo.push(languages);
   }
   const aggregate = aggregateWeeks(activity);
+  const languages = aggregateLanguages(languagesByRepo);
   const pullRequests = await getSearchTotal('pull-request');
   const issues = await getSearchTotal('issue');
   const data = {
@@ -660,32 +602,23 @@ async function main() {
     issues,
     commits52w: aggregate.commits52w,
     activeRepos90d: aggregate.repoStats.filter((repo) => repo.commits90d > 0).length,
+    languages,
+    totalBytes: languages.reduce((sum, language) => sum + language.bytes, 0),
     calendar: aggregate.calendar,
     months: aggregate.months,
-    repoStats: aggregate.repoStats.map(({ name, url, commits90d }) => ({ name, url, commits90d })),
+    repoStats: aggregate.repoStats,
   };
 
-  const svgByName = {
-    overview: (p) => overviewSvg(data, p),
-    'overview-mobile': (p) => overviewMobileSvg(data, p),
-    'activity-strip': (p) => activityStripSvg(data, p),
-    'activity-strip-mobile': (p) => activityStripMobileSvg(data, p),
-    'commit-calendar': (p) => calendarSvg(data, p),
-    'commit-calendar-mobile': (p) => calendarMobileSvg(data, p),
-    'commit-analysis': (p) => commitAnalysisSvg(data, p),
-    'commit-analysis-mobile': (p) => commitAnalysisMobileSvg(data, p),
-  };
-  for (const [name, render] of Object.entries(svgByName)) {
-    for (const [mode, palette] of Object.entries(palettes)) {
-      await writeFile(path.join(analyticsDir, `${name}-${mode}.svg`), render(palette), 'utf8');
-    }
-  }
+  await renderAll(data);
   await writeFile(path.join(dataDir, 'profile-analytics.json'), `${JSON.stringify(data, null, 2)}\n`, 'utf8');
-  console.log(`Updated analytics for ${repos.length} public repositories (${aggregate.commits52w} default-branch commits).`);
+  console.log(`Updated analytics for ${repos.length} public repositories (${aggregate.commits52w} default-branch commits, ${languages.length} languages).`);
 }
 
-main().catch((error) => {
-  console.error(error.stack ?? error);
-  process.exitCode = 1;
-});
+if (process.argv[1] && path.resolve(process.argv[1]) === scriptPath) {
+  main().catch((error) => {
+    console.error(error.stack ?? error);
+    process.exitCode = 1;
+  });
+}
 
+export { renderAll, palettes, panels };
