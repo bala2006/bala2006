@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-26T10:26:20.837Z",
+  "generatedAt": "2026-10-27T10:00:35.313Z",
   "owner": "bala2006",
   "scope": "Public non-fork repositories; commit activity on each default branch.",
   "repos": [
@@ -29,10 +29,10 @@
       "name": "crazy-ads",
       "url": "https://github.com/bala2006/crazy-ads",
       "description": "",
-      "primaryLanguage": "Unspecified",
+      "primaryLanguage": "TypeScript",
       "stars": 0,
       "forks": 0,
-      "pushedAt": "2026-10-22T17:06:05Z",
+      "pushedAt": "2026-10-26T15:40:50Z",
       "archived": false,
       "area": "Apps & creative"
     },
@@ -193,103 +193,103 @@
   ],
   "stars": 8,
   "forks": 0,
-  "pullRequests": 29,
+  "pullRequests": 32,
   "issues": 18,
-  "commits52w": 223,
+  "commits52w": 226,
   "activeRepos90d": 14,
   "languages": [
     {
-      "name": "Dart",
-      "bytes": 2302969,
-      "share": 0.28991137631078717
+      "name": "TypeScript",
+      "bytes": 2353828,
+      "share": 0.28854863650193674
     },
     {
-      "name": "TypeScript",
-      "bytes": 2143730,
-      "share": 0.26986542794919244
+      "name": "Dart",
+      "bytes": 2302969,
+      "share": 0.282313985922603
     },
     {
       "name": "Python",
       "bytes": 1692063,
-      "share": 0.21300691113712752
+      "share": 0.2074248719640418
     },
     {
       "name": "Kotlin",
       "bytes": 734057,
-      "share": 0.09240744237571913
+      "share": 0.08998582159134065
     },
     {
       "name": "Jupyter Notebook",
       "bytes": 432909,
-      "share": 0.054497148683862684
+      "share": 0.05306900150708418
     },
     {
       "name": "C++",
       "bytes": 289726,
-      "share": 0.036472424688747056
+      "share": 0.03551663174163963
     },
     {
       "name": "HTML",
-      "bytes": 154530,
-      "share": 0.019453151554061708
+      "bytes": 155066,
+      "share": 0.019009070700072107
     },
     {
       "name": "JavaScript",
       "bytes": 110387,
-      "share": 0.013896169291388144
+      "share": 0.013532007579797374
     },
     {
       "name": "PowerShell",
       "bytes": 41336,
-      "share": 0.005203620479121819
+      "share": 0.005067254887971448
     },
     {
       "name": "Shell",
       "bytes": 16713,
-      "share": 0.002103931417349598
+      "share": 0.0020487959875814497
     },
     {
       "name": "R",
       "bytes": 9680,
-      "share": 0.0012185757266764859
+      "share": 0.0011866418452574903
     },
     {
       "name": "CSS",
-      "bytes": 6089,
-      "share": 0.0007665193801377192
+      "bytes": 8401,
+      "share": 0.0010298531138438198
     },
     {
       "name": "Dockerfile",
-      "bytes": 3991,
-      "share": 0.0005024107154096957
+      "bytes": 4819,
+      "share": 0.0005907465963115542
     },
     {
       "name": "Makefile",
       "bytes": 1521,
-      "share": 0.00019147248763170814
+      "share": 0.00018645477754510771
     },
     {
       "name": "CMake",
       "bytes": 1379,
-      "share": 0.00017359668668252829
+      "share": 0.00016904742816219824
     },
     {
       "name": "Mako",
       "bytes": 1008,
-      "share": 0.00012689300955474149
+      "share": 0.00012356766322516014
     },
     {
       "name": "Batchfile",
       "bytes": 967,
-      "share": 0.00012173168674547126
+      "share": 0.00011854159755826375
     },
     {
       "name": "C",
       "bytes": 645,
-      "share": 0.00008119641980437327
+      "share": 0.00007906859402800426
     }
   ],
-  "totalBytes": 7943700,
+  "totalBytes": 8157474,
   "calendar": [
     {
       "date": "2025-11-02",
@@ -1613,11 +1613,11 @@
     },
     {
       "date": "2026-09-28",
-      "commits": 15
+      "commits": 14
     },
     {
       "date": "2026-09-29",
-      "commits": 6
+      "commits": 7
     },
     {
       "date": "2026-09-30",
@@ -1709,7 +1709,7 @@
     },
     {
       "date": "2026-10-22",
-      "commits": 0
+      "commits": 2
     },
     {
       "date": "2026-10-23",
@@ -1725,7 +1725,7 @@
     },
     {
       "date": "2026-10-26",
-      "commits": 0
+      "commits": 1
     },
     {
       "date": "2026-10-27",
@@ -1795,7 +1795,7 @@
     },
     {
       "month": "2026-10",
-      "commits": 61
+      "commits": 64
     }
   ],
   "repoStats": [
@@ -1812,7 +1812,7 @@
     {
       "name": "crazy-ads",
       "url": "https://github.com/bala2006/crazy-ads",
-      "commits90d": 1
+      "commits90d": 4
     },
     {
       "name": "Helium",
