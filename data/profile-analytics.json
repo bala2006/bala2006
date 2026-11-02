@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-01T11:27:56.068Z",
+  "generatedAt": "2026-11-02T12:48:53.703Z",
   "owner": "bala2006",
   "scope": "Public non-fork repositories; commit activity on each default branch.",
   "repos": [
@@ -178,25 +178,14 @@
       "pushedAt": "2026-06-16T19:40:05Z",
       "archived": false,
       "area": "Forecasting"
-    },
-    {
-      "name": "voice-detection",
-      "url": "https://github.com/bala2006/voice-detection",
-      "description": "",
-      "primaryLanguage": "Unspecified",
-      "stars": 0,
-      "forks": 0,
-      "pushedAt": "2026-10-01T07:32:41Z",
-      "archived": false,
-      "area": "ML research"
     }
   ],
   "stars": 8,
   "forks": 0,
   "pullRequests": 33,
   "issues": 18,
-  "commits52w": 238,
-  "activeRepos90d": 14,
+  "commits52w": 237,
+  "activeRepos90d": 13,
   "languages": [
     {
       "name": "TypeScript",
@@ -1597,7 +1586,7 @@
     },
     {
       "date": "2026-10-01",
-      "commits": 37
+      "commits": 36
     },
     {
       "date": "2026-10-02",
@@ -1791,7 +1780,7 @@
     },
     {
       "month": "2026-10",
-      "commits": 76
+      "commits": 75
     },
     {
       "month": "2026-11",
@@ -1878,11 +1867,6 @@
       "name": "transport-demand-forecasting",
       "url": "https://github.com/bala2006/transport-demand-forecasting",
       "commits90d": 0
-    },
-    {
-      "name": "voice-detection",
-      "url": "https://github.com/bala2006/voice-detection",
-      "commits90d": 1
     }
   ]
 }
