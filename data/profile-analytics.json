@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-06T12:24:15.417Z",
+  "generatedAt": "2026-11-07T11:17:27.338Z",
   "owner": "bala2006",
   "scope": "Public non-fork repositories; commit activity on each default branch.",
   "repos": [
@@ -178,14 +178,25 @@
       "pushedAt": "2026-06-16T19:40:05Z",
       "archived": false,
       "area": "Forecasting"
+    },
+    {
+      "name": "Vox-Style-Motion-mcp",
+      "url": "https://github.com/bala2006/Vox-Style-Motion-mcp",
+      "description": "",
+      "primaryLanguage": "Unspecified",
+      "stars": 0,
+      "forks": 0,
+      "pushedAt": "2026-11-06T14:27:07Z",
+      "archived": false,
+      "area": "Other projects"
     }
   ],
   "stars": 8,
   "forks": 0,
-  "pullRequests": 38,
+  "pullRequests": 39,
   "issues": 18,
-  "commits52w": 251,
-  "activeRepos90d": 13,
+  "commits52w": 252,
+  "activeRepos90d": 14,
   "languages": [
     {
       "name": "TypeScript",
@@ -1730,7 +1741,7 @@
     },
     {
       "date": "2026-11-06",
-      "commits": 0
+      "commits": 1
     },
     {
       "date": "2026-11-07",
@@ -1784,7 +1795,7 @@
     },
     {
       "month": "2026-11",
-      "commits": 14
+      "commits": 15
     }
   ],
   "repoStats": [
@@ -1867,6 +1878,11 @@
       "name": "transport-demand-forecasting",
       "url": "https://github.com/bala2006/transport-demand-forecasting",
       "commits90d": 0
+    },
+    {
+      "name": "Vox-Style-Motion-mcp",
+      "url": "https://github.com/bala2006/Vox-Style-Motion-mcp",
+      "commits90d": 1
     }
   ]
 }
