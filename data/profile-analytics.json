@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-23T15:14:14.653Z",
+  "generatedAt": "2026-11-24T15:11:25.427Z",
   "owner": "bala2006",
   "scope": "Public non-fork repositories; commit activity on each default branch.",
   "repos": [
@@ -35,6 +35,17 @@
       "pushedAt": "2026-10-26T15:40:50Z",
       "archived": false,
       "area": "Apps & creative"
+    },
+    {
+      "name": "game-dna",
+      "url": "https://github.com/bala2006/game-dna",
+      "description": "GameDNA: PRD and project docs",
+      "primaryLanguage": "Unspecified",
+      "stars": 0,
+      "forks": 0,
+      "pushedAt": "2026-11-24T13:33:01Z",
+      "archived": false,
+      "area": "Other projects"
     },
     {
       "name": "Helium",
@@ -215,10 +226,10 @@
   ],
   "stars": 8,
   "forks": 0,
-  "pullRequests": 75,
+  "pullRequests": 76,
   "issues": 18,
-  "commits52w": 435,
-  "activeRepos90d": 16,
+  "commits52w": 436,
+  "activeRepos90d": 17,
   "languages": [
     {
       "name": "TypeScript",
@@ -1741,7 +1752,7 @@
     },
     {
       "date": "2026-11-24",
-      "commits": 0
+      "commits": 1
     },
     {
       "date": "2026-11-25",
@@ -1807,7 +1818,7 @@
     },
     {
       "month": "2026-11",
-      "commits": 198
+      "commits": 199
     }
   ],
   "repoStats": [
@@ -1825,6 +1836,11 @@
       "name": "crazy-ads",
       "url": "https://github.com/bala2006/crazy-ads",
       "commits90d": 4
+    },
+    {
+      "name": "game-dna",
+      "url": "https://github.com/bala2006/game-dna",
+      "commits90d": 1
     },
     {
       "name": "Helium",
