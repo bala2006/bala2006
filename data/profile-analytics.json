@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-24T15:11:25.427Z",
+  "generatedAt": "2026-11-25T14:52:21.665Z",
   "owner": "bala2006",
   "scope": "Public non-fork repositories; commit activity on each default branch.",
   "repos": [
@@ -40,10 +40,10 @@
       "name": "game-dna",
       "url": "https://github.com/bala2006/game-dna",
       "description": "GameDNA: PRD and project docs",
-      "primaryLanguage": "Unspecified",
+      "primaryLanguage": "JavaScript",
       "stars": 0,
       "forks": 0,
-      "pushedAt": "2026-11-24T13:33:01Z",
+      "pushedAt": "2026-11-24T16:22:15Z",
       "archived": false,
       "area": "Other projects"
     },
@@ -228,91 +228,91 @@
   "forks": 0,
   "pullRequests": 76,
   "issues": 18,
-  "commits52w": 436,
+  "commits52w": 444,
   "activeRepos90d": 17,
   "languages": [
     {
       "name": "TypeScript",
-      "bytes": 3454880,
-      "share": 0.38037282896456387
+      "bytes": 3806151,
+      "share": 0.36957084487184966
     },
     {
       "name": "Dart",
       "bytes": 2302969,
-      "share": 0.2535505816548455
+      "share": 0.22361440705943583
     },
     {
       "name": "Kotlin",
       "bytes": 1429035,
-      "share": 0.15733284097837713
+      "share": 0.13875688912537723
+    },
+    {
+      "name": "JavaScript",
+      "bytes": 1035350,
+      "share": 0.10053073938424133
     },
     {
       "name": "Python",
       "bytes": 627959,
-      "share": 0.06913656662568847
+      "share": 0.060973760151628725
     },
     {
       "name": "Jupyter Notebook",
       "bytes": 432909,
-      "share": 0.04766209564853783
+      "share": 0.04203473400887867
     },
     {
       "name": "C++",
       "bytes": 289726,
-      "share": 0.03189803936593666
-    },
-    {
-      "name": "JavaScript",
-      "bytes": 185350,
-      "share": 0.020406527534554575
+      "share": 0.028131906117582175
     },
     {
       "name": "HTML",
-      "bytes": 169833,
-      "share": 0.018698148318187252
+      "bytes": 181198,
+      "share": 0.017594020297431557
     },
     {
       "name": "CSS",
-      "bytes": 118203,
-      "share": 0.013013826674761017
+      "bytes": 121529,
+      "share": 0.011800261000267992
     },
     {
       "name": "PowerShell",
       "bytes": 40773,
-      "share": 0.004488995668553514
+      "share": 0.003958989556105348
     },
     {
       "name": "Shell",
       "bytes": 16200,
-      "share": 0.0017835756463975404
+      "share": 0.0015729926865549906
     },
     {
       "name": "R",
       "bytes": 9680,
-      "share": 0.0010657414973535922
+      "share": 0.0009399116793735993
     },
     {
       "name": "Dockerfile",
       "bytes": 2886,
-      "share": 0.00031774069848785816
+      "share": 0.000280225734160352
     },
     {
       "name": "CMake",
       "bytes": 1379,
-      "share": 0.00015182412446803755
+      "share": 0.00013389857498514397
     },
     {
       "name": "C",
       "bytes": 645,
-      "share": 0.0000710127340695317
+      "share": 0.000062628412520245
     },
     {
       "name": "Batchfile",
       "bytes": 451,
-      "share": 0.00004965386521761054
+      "share": 0.00004379133960717906
     }
   ],
-  "totalBytes": 9082878,
+  "totalBytes": 10298840,
   "calendar": [
     {
       "date": "2025-11-30",
@@ -1752,7 +1752,7 @@
     },
     {
       "date": "2026-11-24",
-      "commits": 1
+      "commits": 9
     },
     {
       "date": "2026-11-25",
@@ -1818,7 +1818,7 @@
     },
     {
       "month": "2026-11",
-      "commits": 199
+      "commits": 207
     }
   ],
   "repoStats": [
@@ -1840,7 +1840,7 @@
     {
       "name": "game-dna",
       "url": "https://github.com/bala2006/game-dna",
-      "commits90d": 1
+      "commits90d": 9
     },
     {
       "name": "Helium",
